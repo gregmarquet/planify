@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707154708) do
+ActiveRecord::Schema.define(version: 20160708192025) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "satisfaction_score"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.boolean  "completed",        default: false
+    t.integer  "user_category_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "user_categories", force: :cascade do |t|
