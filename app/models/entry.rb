@@ -12,4 +12,7 @@
 #
 
 class Entry < ActiveRecord::Base
+  belongs_to :user_category
+
+  validates :title, presence: true
 end
