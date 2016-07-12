@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       flash.now.alert = 'Email or password is invalid'
-      render 'new'
+      render 'welcome/index'
     end
   end
 

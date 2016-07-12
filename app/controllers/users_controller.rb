@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # allows new user signup 
-  skip_before_action :authorized?, only: [:create]
+  skip_before_action :authorized?, only: [:create, :update]
 
   def show
     # Main user dashboard
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # add categories
+
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "Thank you for signing up!"
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.update(user_params)
     @user.save
-    render :nothing => true
+    redirect_to user_path(@user)
   end
 
   private
