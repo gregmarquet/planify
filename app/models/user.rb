@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     Category.all.each do |category|
       user.categories << category
     end
-    return user
+    user
   end
 
 end
