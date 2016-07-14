@@ -1,8 +1,23 @@
 a {
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 .navbar {
   /*font-size: 20px;*/
+}
+
+.container-fluid {
+  margin-top: 30px
+}
+
+.categories {
+  border: 1px solid red;
+  border-radius: 3px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.centered {
+  margin: 50px;
 }
 
