@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :user_categories
   has_many :categories, through: :user_categories
   has_many :entries, through: :user_categories
+  has_many :scores, through: :user_categories
   has_secure_password
 
   validates :username, :email, presence: true
