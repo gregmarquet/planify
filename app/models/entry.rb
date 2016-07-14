@@ -15,4 +15,12 @@ class Entry < ActiveRecord::Base
   belongs_to :user_category
 
   validates :title, presence: true
+
+  def user
+    self.user_category.user
+  end
+
+  def category
+    self.user_category.category
+  end
 end

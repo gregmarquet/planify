@@ -19,4 +19,13 @@ class User < ActiveRecord::Base
   validates :username, :email, presence: true
   validates :username, :email, uniqueness: true
 
+  def self.new_with_categories(options)
+    # create a new user
+    # category = Category.first 
+    # user = User.new(options)
+    # user.categories << category # UserCategory.create(user_id: user.id, category_id: category.id)
+    # associate it with all of the categories
+    # return the user
+  end
+
 end

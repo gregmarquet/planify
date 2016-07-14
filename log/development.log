@@ -3000,3 +3000,338 @@ Processing by UsersController#show as HTML
   Rendered layouts/_user_form.html.erb (4.9ms)
   Rendered users/_edit_user_profile_modal.html.erb (7.4ms)
 Completed 200 OK in 107ms (Views: 105.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/logout" for ::1 at 2016-07-13 10:26:40 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-13 10:26:41 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+  Rendered sessions/_session_login.html.erb (1.6ms)
+  Rendered layouts/_login_modal.html.erb (3.9ms)
+  Rendered layouts/_user_form.html.erb (6.7ms)
+  Rendered layouts/_sign_up_modal.html.erb (8.8ms)
+Completed 200 OK in 189ms (Views: 182.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for ::1 at 2016-07-13 10:26:56 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"uZMNJhu2UJhBv8NmWxx4HgQoRDzMTDudqfQzaxgTBlHrCI/LQWjAm0NHgGrMOPMOB01NP96KqxKO0EbRYY7Pvg==", "email"=>"ian@ian.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "ian@ian.com"]]
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered sessions/_session_login.html.erb (1.0ms)
+  Rendered layouts/_login_modal.html.erb (3.8ms)
+  Rendered layouts/_user_form.html.erb (7.3ms)
+  Rendered layouts/_sign_up_modal.html.erb (9.7ms)
+Completed 500 Internal Server Error in 234ms (ActiveRecord: 1.3ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <div class='text-center'>
+    2:   <%= form_for @user do |f| %>
+    3:   
+    4:     <% if @user.errors.any? %>
+    5:       <div class='error messages'>
+  app/views/layouts/_user_form.html.erb:2:in `_app_views_layouts__user_form_html_erb__2217145969181804215_70127823922580'
+  app/views/layouts/_sign_up_modal.html.erb:9:in `_app_views_layouts__sign_up_modal_html_erb___3861743343646669243_70127817092540'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__3567864134263061653_70127816136420'
+  app/controllers/sessions_controller.rb:11:in `create'
+
+
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.5ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (91.4ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.8ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.8ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (68.3ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (148.9ms)
+  [1m[36mCategory Load (3.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Fitness and Body"], ["created_at", "2016-07-13 14:47:53.218451"], ["updated_at", "2016-07-13 14:47:53.218451"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Mind and Soul"], ["created_at", "2016-07-13 14:47:53.225702"], ["updated_at", "2016-07-13 14:47:53.225702"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Love"], ["created_at", "2016-07-13 14:47:53.228452"], ["updated_at", "2016-07-13 14:47:53.228452"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Friends and Family"], ["created_at", "2016-07-13 14:47:53.231191"], ["updated_at", "2016-07-13 14:47:53.231191"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Career"], ["created_at", "2016-07-13 14:47:53.235529"], ["updated_at", "2016-07-13 14:47:53.235529"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Finance"], ["created_at", "2016-07-13 14:47:53.239709"], ["updated_at", "2016-07-13 14:47:53.239709"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Personal Growth"], ["created_at", "2016-07-13 14:47:53.243692"], ["updated_at", "2016-07-13 14:47:53.243692"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mCategory Load (2.1ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+
+
+Started GET "/" for ::1 at 2016-07-14 10:03:45 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (2.8ms)
+  Rendered sessions/_session_login.html.erb (5.7ms)
+  Rendered layouts/_login_modal.html.erb (11.2ms)
+  Rendered layouts/_user_form.html.erb (9.1ms)
+  Rendered layouts/_sign_up_modal.html.erb (11.6ms)
+Completed 200 OK in 408ms (Views: 370.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-a127dbf6aa6d2ab62b54cd5794c60f8122fcbf3bf56f47f4458efa8c0c110e73.css?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-14 10:03:47 -0400
+
+
+Started GET "/" for ::1 at 2016-07-14 10:03:51 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered sessions/_session_login.html.erb (1.1ms)
+  Rendered layouts/_login_modal.html.erb (4.4ms)
+  Rendered layouts/_user_form.html.erb (4.8ms)
+  Rendered layouts/_sign_up_modal.html.erb (7.1ms)
+Completed 200 OK in 206ms (Views: 204.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-a127dbf6aa6d2ab62b54cd5794c60f8122fcbf3bf56f47f4458efa8c0c110e73.css?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-14 10:03:52 -0400
+
+
+Started POST "/sessions" for ::1 at 2016-07-14 10:04:03 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aFTEUpIrsr4B9Vcv1jqGPXolek7m+dQtEgL2g1M2va86z0a/yPUivQMNFCNBHg0teUBzTfQ/RKI1JoM5Kqt0QA==", "email"=>"ian@ian.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[36mUser Load (2.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1[0m  [["email", "ian@ian.com"]]
+  Rendered welcome/index.html.erb within layouts/application (0.7ms)
+  Rendered sessions/_session_login.html.erb (2.8ms)
+  Rendered layouts/_login_modal.html.erb (6.0ms)
+  Rendered layouts/_user_form.html.erb (15.6ms)
+  Rendered layouts/_sign_up_modal.html.erb (17.5ms)
+Completed 500 Internal Server Error in 260ms (ActiveRecord: 2.8ms)
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <div class='text-center'>
+    2:   <%= form_for @user do |f| %>
+    3:   
+    4:     <% if @user.errors.any? %>
+    5:       <div class='error messages'>
+  app/views/layouts/_user_form.html.erb:2:in `_app_views_layouts__user_form_html_erb__2217145969181804215_70127823922580'
+  app/views/layouts/_sign_up_modal.html.erb:9:in `_app_views_layouts__sign_up_modal_html_erb___3861743343646669243_70127817092540'
+  app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb__3567864134263061653_70127816136420'
+  app/controllers/sessions_controller.rb:11:in `create'
+
+
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.8ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/actionpack-4.2.6/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (107.0ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (3.8ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (65.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (3.9ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.6ms)
+  Rendered /Users/gregorymarquet/.rvm/gems/ruby-2.2.2/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (149.5ms)
+
+
+Started GET "/" for ::1 at 2016-07-14 10:11:48 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.4ms)
+  Rendered sessions/_session_login.html.erb (1.8ms)
+  Rendered layouts/_login_modal.html.erb (4.8ms)
+  Rendered layouts/_user_form.html.erb (7.9ms)
+  Rendered layouts/_sign_up_modal.html.erb (10.4ms)
+Completed 200 OK in 252ms (Views: 198.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2016-07-14 10:11:52 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.0ms)
+  Rendered sessions/_session_login.html.erb (1.3ms)
+  Rendered layouts/_login_modal.html.erb (2.9ms)
+  Rendered layouts/_user_form.html.erb (4.3ms)
+  Rendered layouts/_sign_up_modal.html.erb (6.7ms)
+Completed 200 OK in 67ms (Views: 66.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/application.self-a127dbf6aa6d2ab62b54cd5794c60f8122fcbf3bf56f47f4458efa8c0c110e73.css?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-14 10:11:53 -0400
+
+
+Started POST "/sessions" for ::1 at 2016-07-14 10:12:04 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iSNbz7EiL21XE9r++XyPtEgDltsAKsUztYzVaLzColjbuNki6/y/blXrmfJuWASkS2af2BLsVbySqKDSxV9rtw==", "email"=>"ian@ian.com", "password"=>"[FILTERED]", "commit"=>"Log In"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ? LIMIT 1  [["email", "ian@ian.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 118ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-07-14 10:12:05 -0400
+Processing by WelcomeController#index as HTML
+  Rendered welcome/index.html.erb within layouts/application (0.1ms)
+  Rendered sessions/_session_login.html.erb (1.2ms)
+  Rendered layouts/_login_modal.html.erb (3.0ms)
+  Rendered layouts/_user_form.html.erb (2.6ms)
+  Rendered layouts/_sign_up_modal.html.erb (5.4ms)
+Completed 200 OK in 68ms (Views: 67.4ms | ActiveRecord: 0.0ms)
