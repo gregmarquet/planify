@@ -8,7 +8,7 @@
 <body>
   <% if current_user %>
     <%= render "/users/edit_user_profile_modal" %>
-    <%#= render "/layouts/new_entry_modal" %>
+    <%= render "/entries/new_entry_modal" %>
   <% else %>
     <%= render "layouts/login_modal" %>
     <%= render "layouts/sign_up_modal" %>
