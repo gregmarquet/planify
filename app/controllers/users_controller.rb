@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def show
     # Main user dashboard
     @user = current_user
+    @entry = Entry.new
   end
 
   def edit
