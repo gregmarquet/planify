@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @user = current_user
     @entry = Entry.find(params[:id])
   end
 
@@ -13,8 +14,11 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
+    @user_category = UserCategory.find_by({user_id: params[:user_id],category_id: params[:category_id]})
+    @entry.user_category = @user_category
     @entry.save
     redirect_to entry_path(@entry)
+
   end
 
   def update

@@ -1,6 +1,7 @@
 <div class='text-center'>
   <%= form_for @entry do |f| %>
-  
+    <input type="hidden" name="user_id" value="<%= @user.id %>">
+    <input type="hidden" name="category_id" value="category">
     <% if @entry.errors.any? %>
       <div class='error messages'>
         <h2>Please correct the errors and resubmit the form.</h2>
