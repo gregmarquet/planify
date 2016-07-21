@@ -22,20 +22,29 @@ class EntriesController < ApplicationController
 
   end
 
-  def update
-    @entry = Entry.find(params[:id])
-    @entry.update(entry_params)
-    redirect_to entry_path(@entry)
-  end
-
   def edit
     @entry = Entry.find(params[:id])
+  end
+
+  def update
+    # byebug
+    @user = current_user
+    @entry = Entry.find(params[:id])
+    @entry.update(entry_params)
+    redirect_to user_path(@user)
+  end
+
+  def destroy
+    @user = current_user
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+    redirect_to user_path(@user)
   end
 
   private
  
   def entry_params
-    params.require(:entry).permit(:title, :description)
+    params.require(:entry).permit(:title, :description, :status)
   end
  
 end

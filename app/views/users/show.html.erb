@@ -2,10 +2,18 @@
   <h1>My categories</h1>
   <div class="row centered">
     <% @user.categories.each do |category|%>
-      <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3 categories" id="category-<%= category.id %>">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 categories" id="category-<%= category.id %>">
         <h4><%= category.name %></h4>
           <% category.entries.each do |entry|%>
-          <a href = "#" class = "list-group-item"><%= entry.title %></a>
+            <div class='well'>
+              <%= entry.title %>
+              </br>
+              <%= button_to 'Delete', entry_path(entry), :method => :delete %>
+              <%= button_to 'Completed', entry_path(entry), :method => :put, params: {:"entry[status]" => "completed"} %>
+              <!-- <a class="btn btn-primary btn-sm" href="/entries/<%= entry.id %>" role="button">Delete</a> -->
+              <!-- <a class="btn btn-primary btn-sm" href="#" role="button">Completed</a> -->
+              <a class="btn btn-primary btn-sm" href="#" role="button">abandoned</a>
+            </div>
           <% end %>
         <div>
           <%= link_to 'Add Entry...', "#", data: {toggle: "modal", target: "#newEntryModal"}, class: "entry_form_link", id: category.id %>
