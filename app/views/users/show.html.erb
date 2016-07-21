@@ -10,9 +10,7 @@
               </br>
               <%= button_to 'Delete', entry_path(entry), :method => :delete %>
               <%= button_to 'Completed', entry_path(entry), :method => :put, params: {:"entry[status]" => "completed"} %>
-              <!-- <a class="btn btn-primary btn-sm" href="/entries/<%= entry.id %>" role="button">Delete</a> -->
-              <!-- <a class="btn btn-primary btn-sm" href="#" role="button">Completed</a> -->
-              <a class="btn btn-primary btn-sm" href="#" role="button">abandoned</a>
+              <%= button_to 'Abandoned', entry_path(entry), :method => :put, params: {:"entry[status]" => "abandoned"} %>
             </div>
           <% end %>
         <div>

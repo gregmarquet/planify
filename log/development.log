@@ -13198,3 +13198,267 @@ Processing by UsersController#show as HTML
   Rendered entries/_new_entry_modal.html.erb (46.5ms)
 Completed 200 OK in 1245ms (Views: 1210.0ms | ActiveRecord: 5.3ms)
   [1m[36mEntry Load (0.2ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1[0m  [["id", 9]]
+
+
+Started GET "/users/3" for ::1 at 2016-07-21 12:33:35 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (18.5ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (164.6ms)
+  Rendered layouts/_user_form.html.erb (26.8ms)
+  Rendered users/_edit_user_profile_modal.html.erb (31.3ms)
+  Rendered layouts/_entry_form.html.erb (13.5ms)
+  Rendered entries/_new_entry_modal.html.erb (17.1ms)
+Completed 200 OK in 754ms (Views: 723.0ms | ActiveRecord: 22.4ms)
+
+
+Started GET "/assets/application.self-feab6a0810eaceaa7cc11a2879fc05b9b6af7b0ef3efa5bcde3471aa19eef81c.css?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-21 12:33:37 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/entries.self-48b718c0473350fa73608c46f507b2b06ba903c6cc69f1459cea13342a70431f.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-21 12:33:38 -0400
+
+
+Started GET "/users/3" for ::1 at 2016-07-21 12:34:25 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCategory Load (0.5ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  [1m[36mEntry Load (0.8ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 2]]
+  [1m[36mEntry Load (0.5ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mEntry Load (0.8ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 4]]
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 6]]
+  [1m[36mEntry Load (0.4ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (203.2ms)
+  Rendered layouts/_user_form.html.erb (24.5ms)
+  Rendered users/_edit_user_profile_modal.html.erb (27.7ms)
+  Rendered layouts/_entry_form.html.erb (14.9ms)
+  Rendered entries/_new_entry_modal.html.erb (19.7ms)
+Completed 200 OK in 786ms (Views: 761.4ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-21 12:34:27 -0400
+
+
+Started GET "/assets/application.self-feab6a0810eaceaa7cc11a2879fc05b9b6af7b0ef3efa5bcde3471aa19eef81c.css?body=1" for ::1 at 2016-07-21 12:34:27 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-21 12:34:27 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-21 12:34:28 -0400
+
+
+Started GET "/assets/entries.self-48b718c0473350fa73608c46f507b2b06ba903c6cc69f1459cea13342a70431f.js?body=1" for ::1 at 2016-07-21 12:34:29 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-21 12:34:29 -0400
+
+
+Started GET "/users/3" for ::1 at 2016-07-21 12:34:37 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.8ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.8ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.7ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (312.6ms)
+  Rendered layouts/_user_form.html.erb (73.2ms)
+  Rendered users/_edit_user_profile_modal.html.erb (78.8ms)
+  Rendered layouts/_entry_form.html.erb (58.1ms)
+  Rendered entries/_new_entry_modal.html.erb (63.7ms)
+Completed 200 OK in 1373ms (Views: 1333.0ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-07-21 12:34:39 -0400
+
+
+Started GET "/assets/application.self-feab6a0810eaceaa7cc11a2879fc05b9b6af7b0ef3efa5bcde3471aa19eef81c.css?body=1" for ::1 at 2016-07-21 12:34:39 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-07-21 12:34:39 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-07-21 12:34:39 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-07-21 12:34:39 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-07-21 12:34:40 -0400
+
+
+Started GET "/assets/entries.self-48b718c0473350fa73608c46f507b2b06ba903c6cc69f1459cea13342a70431f.js?body=1" for ::1 at 2016-07-21 12:34:41 -0400
+
+
+Started PUT "/entries/5" for ::1 at 2016-07-21 12:35:00 -0400
+Processing by EntriesController#update as HTML
+  Parameters: {"authenticity_token"=>"sd/J1aV00imEWve30SghWgxb7T+VvzoeyFhe5ruExpqibevjnvxKDWAowqJVi1jcvmngu1Xv8UpSiUPNhylQ2w==", "entry"=>{"status"=>"abandoned"}, "id"=>"5"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mEntry Load (0.8ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36m (0.7ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (8.6ms)[0m  UPDATE "entries" SET "status" = ?, "updated_at" = ? WHERE "entries"."id" = ?  [["status", "abandoned"], ["updated_at", "2016-07-21 16:35:00.279680"], ["id", 5]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 90ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/users/3" for ::1 at 2016-07-21 12:35:00 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.8ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.7ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.6ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.6ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (306.6ms)
+  Rendered layouts/_user_form.html.erb (64.4ms)
+  Rendered users/_edit_user_profile_modal.html.erb (68.9ms)
+  Rendered layouts/_entry_form.html.erb (24.3ms)
+  Rendered entries/_new_entry_modal.html.erb (29.0ms)
+Completed 200 OK in 1357ms (Views: 1336.4ms | ActiveRecord: 5.9ms)
+  [1m[36mEntry Load (0.7ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1[0m  [["id", 5]]
