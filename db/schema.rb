@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160721153455) do
     t.integer  "user_category_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "status",           default: "ensure"
+    t.string   "status",           default: "unsure"
   end
 
   create_table "scores", force: :cascade do |t|

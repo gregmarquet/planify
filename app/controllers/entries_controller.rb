@@ -1,6 +1,8 @@
 class EntriesController < ApplicationController
   def index
-    @entry = Entry.all
+    @user = current_user
+    @entries = current_user.entries.all
+    @entry = Entry.new
   end
 
   def show

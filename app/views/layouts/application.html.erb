@@ -29,7 +29,17 @@
         <% end %>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
+
         
+          <% if current_user %>
+          
+            <%= link_to 'My Entries', entries_path, method: 'get' %>
+              
+            
+          
+          <% end %>
+        
+
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li class="dropdown">
