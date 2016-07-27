@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20160726155436) do
     t.string   "title"
     t.string   "description"
     t.integer  "user_category_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "status",           default: "unsure"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "status",           default: "incomplete"
   end
 
   create_table "scores", force: :cascade do |t|

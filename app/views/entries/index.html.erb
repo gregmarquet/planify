@@ -1,14 +1,14 @@
 <ul class="list-group">
+  <h3>Incomplete</h3>
+  <% @entries.incomplete.each do |entry| %>
+    <li class="list-group-item"><%= entry.title %></li>
+  <% end %>
   <h3>Completed</h3>
-  <% @entries.where(status: "completed").each do |entry| %>
+  <% @entries.completed.each do |entry| %>
     <li class="list-group-item"><%= entry.title %></li>
   <% end %>
   <h3>Abandoned</h3>
-  <% @entries.where(status: "abandoned").each do |entry| %>
+  <% @entries.abandoned.each do |entry| %>
     <li class="list-group-item"><%= entry.title %></li>
-  <% end %>
-  <h3>Unsure</h3>
-  <% @entries.where(status: "unsure").each do |entry| %>
-    <li class="list-group-item"><%= entry.title %></li>
-  <% end %>
+  <% end %> 
 </ul>

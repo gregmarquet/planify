@@ -23,4 +23,26 @@ class Entry < ActiveRecord::Base
   def category
     self.user_category.category
   end
+
+  def self.incomplete
+    self.where(status: "incomplete")
+  end
+
+  def self.completed
+    self.where(status: "completed")
+  end
+
+  def self.abandoned
+    self.where(status: "abandoned")
+  end
+
+  def self.fitness_and_body
+    self.joins(:user_category).where(user_categories: {category_id: 1})
+  end
+
+  def self.love
+    self.joins(:user_category).where(user_categories: {category_id: 3})
+  end
+
+  
 end
