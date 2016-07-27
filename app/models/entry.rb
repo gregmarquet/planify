@@ -40,8 +40,28 @@ class Entry < ActiveRecord::Base
     self.joins(:user_category).where(user_categories: {category_id: 1})
   end
 
+  def self.mind_and_soul
+    self.joins(:user_category).where(user_categories: {category_id: 2})
+  end
+
   def self.love
     self.joins(:user_category).where(user_categories: {category_id: 3})
+  end
+
+  def self.friends_and_family
+    self.joins(:user_category).where(user_categories: {category_id: 4})
+  end
+
+  def self.career
+    self.joins(:user_category).where(user_categories: {category_id: 5})
+  end
+
+  def self.finance
+    self.joins(:user_category).where(user_categories: {category_id: 6})
+  end
+
+  def self.personal_growth
+    self.joins(:user_category).where(user_categories: {category_id: 7})
   end
 
   
