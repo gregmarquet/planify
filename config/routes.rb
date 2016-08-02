@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :entries
   resources :sessions, only: [:create, :destroy]
   resources :users, except: [:destroy]
+  resources :stats, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

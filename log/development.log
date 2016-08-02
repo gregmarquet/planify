@@ -16644,3 +16644,358 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 398ms (Views: 392.0ms | ActiveRecord: 2.7ms)
   [1m[35mEntry Load (5.9ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
   [1m[36mEntry Load (1.4ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ? AND "entries"."status" = ?[0m  [["category_id", 1], ["status", "completed"]]
+
+
+Started GET "/entries" for ::1 at 2016-08-01 23:14:23 -0400
+Processing by EntriesController#index as HTML
+  [1m[35mUser Load (6.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mEntry Load (1.0ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?[0m  [["user_id", 3], ["status", "incomplete"]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?  [["user_id", 3], ["status", "completed"]]
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?[0m  [["user_id", 3], ["status", "abandoned"]]
+  Rendered entries/index.html.erb within layouts/application (36.6ms)
+  Rendered layouts/_user_form.html.erb (20.8ms)
+  Rendered users/_edit_user_profile_modal.html.erb (26.4ms)
+  Rendered layouts/_entry_form.html.erb (3.9ms)
+  Rendered entries/_new_entry_modal.html.erb (6.4ms)
+Completed 200 OK in 495ms (Views: 362.2ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 09:59:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (14.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (133.7ms)
+  Rendered layouts/_user_form.html.erb (15.2ms)
+  Rendered users/_edit_user_profile_modal.html.erb (21.4ms)
+  Rendered layouts/_entry_form.html.erb (9.4ms)
+  Rendered entries/_new_entry_modal.html.erb (12.6ms)
+Completed 200 OK in 759ms (Views: 700.0ms | ActiveRecord: 16.2ms)
+  [1m[36mEntry Load (3.0ms)[0m  [1mSELECT "entries".* FROM "entries"[0m
+  [1m[35mEntry Load (1.8ms)[0m  SELECT "entries".* FROM "entries" WHERE "entries"."status" = ?  [["status", "abandoned"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "entries" WHERE "entries"."status" = ?[0m  [["status", "abandoned"]]
+  [1m[35m (1.2ms)[0m  SELECT COUNT(*) FROM "entries"
+  [1m[36mEntry Load (0.8ms)[0m  [1mSELECT "entries".* FROM "entries" WHERE "entries"."status" = ?[0m  [["status", "completed"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "entries" WHERE "entries"."status" = ?  [["status", "completed"]]
+  [1m[36mCategory Load (1.6ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id"[0m
+  [1m[35mCategory Load (4.9ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" GROUP BY "categories"."id"  ORDER BY count(*) desc
+  [1m[36mEntry Load (1.3ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (8.5ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36m (7.8ms)[0m  [1mSELECT COUNT(*) FROM "entries" INNER JOIN "user_categories" ON "user_categories"."id" = "entries"."user_category_id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+
+
+Started POST "/entries" for ::1 at 2016-08-02 10:35:59 -0400
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9D8qg9HS1kIzdt9JXSNwT+IGzU26rOKJr7c9PyMU0JznjQi16lpOZtcE6lzZgAnJUDTAyXr8Kd01ZiAUH7lG3Q==", "user_id"=>"3", "category_id"=>"category", "entry"=>{"title"=>"money", "description"=>""}, "commit"=>"Create Entry"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mUserCategory Load (5.5ms)[0m  SELECT  "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ? AND "user_categories"."category_id" = ? LIMIT 1  [["user_id", 3], ["category_id", 0]]
+  [1m[36m (5.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "entries" ("title", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["title", "money"], ["description", ""], ["created_at", "2016-08-02 14:35:59.592012"], ["updated_at", "2016-08-02 14:35:59.592012"]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 405ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:35:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (129.0ms)
+  Rendered layouts/_user_form.html.erb (7.0ms)
+  Rendered users/_edit_user_profile_modal.html.erb (10.5ms)
+  Rendered layouts/_entry_form.html.erb (3.1ms)
+  Rendered entries/_new_entry_modal.html.erb (6.1ms)
+Completed 200 OK in 518ms (Views: 495.3ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:36:24 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 2]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mEntry Load (0.3ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 4]]
+  [1m[36mEntry Load (0.3ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mEntry Load (0.3ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 6]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (62.8ms)
+  Rendered layouts/_user_form.html.erb (6.9ms)
+  Rendered users/_edit_user_profile_modal.html.erb (10.0ms)
+  Rendered layouts/_entry_form.html.erb (2.3ms)
+  Rendered entries/_new_entry_modal.html.erb (4.6ms)
+Completed 200 OK in 225ms (Views: 208.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/application.self-feab6a0810eaceaa7cc11a2879fc05b9b6af7b0ef3efa5bcde3471aa19eef81c.css?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/entries.self-48b718c0473350fa73608c46f507b2b06ba903c6cc69f1459cea13342a70431f.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for ::1 at 2016-08-02 10:36:26 -0400
+
+
+Started POST "/entries" for ::1 at 2016-08-02 10:36:35 -0400
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q07ea8FJigUPPEYaIPEMPezu14wxUz3/LYugohtlAxtQ/Pxd+sESIetOcw+kUnW7XtzaCPED9qu3Wr2JJ8iVWg==", "user_id"=>"3", "category_id"=>"6", "entry"=>{"title"=>"money", "description"=>""}, "commit"=>"Create Entry"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUserCategory Load (0.1ms)[0m  [1mSELECT  "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ? AND "user_categories"."category_id" = ? LIMIT 1[0m  [["user_id", 3], ["category_id", 6]]
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "entries" ("title", "description", "user_category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "money"], ["description", ""], ["user_category_id", 13], ["created_at", "2016-08-02 14:36:35.161622"], ["updated_at", "2016-08-02 14:36:35.161622"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 80ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:36:35 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 2]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 4]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 6]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_user_form.html.erb (6.5ms)
+  Rendered users/_edit_user_profile_modal.html.erb (8.3ms)
+  Rendered layouts/_entry_form.html.erb (1.9ms)
+  Rendered entries/_new_entry_modal.html.erb (4.0ms)
+Completed 200 OK in 95ms (Views: 93.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/entries" for ::1 at 2016-08-02 10:36:46 -0400
+Processing by EntriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t+E//btMCRvcUMmhPxRqrWNShs/ILr4ZgK2coU+mkx6kUx3LgMSRPzgi/LS7txMr0WCLSwh+dU0afIGKcwsFXw==", "user_id"=>"3", "category_id"=>"6", "entry"=>{"title"=>"savings", "description"=>""}, "commit"=>"Create Entry"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mUserCategory Load (0.1ms)[0m  [1mSELECT  "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ? AND "user_categories"."category_id" = ? LIMIT 1[0m  [["user_id", 3], ["category_id", 6]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "entries" ("title", "description", "user_category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "savings"], ["description", ""], ["user_category_id", 13], ["created_at", "2016-08-02 14:36:46.957365"], ["updated_at", "2016-08-02 14:36:46.957365"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:36:46 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 2]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 4]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 6]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (15.2ms)
+  Rendered layouts/_user_form.html.erb (6.2ms)
+  Rendered users/_edit_user_profile_modal.html.erb (7.9ms)
+  Rendered layouts/_entry_form.html.erb (2.6ms)
+  Rendered entries/_new_entry_modal.html.erb (4.1ms)
+Completed 200 OK in 152ms (Views: 149.6ms | ActiveRecord: 0.9ms)
+  [1m[35mCategory Load (4.1ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" GROUP BY "categories"."id"  ORDER BY count(*) desc
+  [1m[36mCategory Load (2.4ms)[0m  [1mSELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" GROUP BY "categories"."id"  ORDER BY count(*) desc LIMIT 1[0m
+  [1m[35mCategory Load (2.3ms)[0m  SELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" GROUP BY "categories"."id"  ORDER BY count(*) desc LIMIT 1
+  [1m[36mCategory Load (3.0ms)[0m  [1mSELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" WHERE (status = 'completed') GROUP BY "categories"."id"  ORDER BY count(*) desc LIMIT 1[0m
+
+
+Started PUT "/entries/18" for ::1 at 2016-08-02 10:52:13 -0400
+Processing by EntriesController#update as HTML
+  Parameters: {"authenticity_token"=>"zfF386RRrFWFTTmgKJK2xsIHf5PiOK3gNQHtcGjdKsDeQ1XFn9k0cWE/DLWsMc9AcDVyFyJoZrSv0PBbVHC8gQ==", "entry"=>{"status"=>"completed"}, "id"=>"18"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1[0m  [["id", 18]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 134ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:52:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (1.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.4ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (62.5ms)
+  Rendered layouts/_user_form.html.erb (6.0ms)
+  Rendered users/_edit_user_profile_modal.html.erb (11.5ms)
+  Rendered layouts/_entry_form.html.erb (2.3ms)
+  Rendered entries/_new_entry_modal.html.erb (4.4ms)
+Completed 200 OK in 180ms (Views: 174.2ms | ActiveRecord: 3.4ms)
+
+
+Started PUT "/entries/24" for ::1 at 2016-08-02 10:52:22 -0400
+Processing by EntriesController#update as HTML
+  Parameters: {"authenticity_token"=>"XE5SqYhyljdC77MEH5d/y9g+Q5BLMCprrBrM4UyzQpRP/HCfs/oOE6adhhGbNAZNagxOFItg4T82y9HKcB7U1Q==", "entry"=>{"status"=>"completed"}, "id"=>"24"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1  [["id", 24]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "entries" SET "status" = ?, "updated_at" = ? WHERE "entries"."id" = ?  [["status", "completed"], ["updated_at", "2016-08-02 14:52:22.107809"], ["id", 24]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 10ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:52:22 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (31.5ms)
+  Rendered layouts/_user_form.html.erb (5.3ms)
+  Rendered users/_edit_user_profile_modal.html.erb (8.0ms)
+  Rendered layouts/_entry_form.html.erb (2.3ms)
+  Rendered entries/_new_entry_modal.html.erb (4.2ms)
+Completed 200 OK in 127ms (Views: 124.1ms | ActiveRecord: 1.5ms)
+
+
+Started PUT "/entries/25" for ::1 at 2016-08-02 10:52:26 -0400
+Processing by EntriesController#update as HTML
+  Parameters: {"authenticity_token"=>"qgk5UJpWUABIDF1IPpqwoi2qevELk44R1ATijaTa2Sy5uxtmod7IJKx+aF26Ockkn5h3dcvDRUVO1f+mmHdPbQ==", "entry"=>{"status"=>"completed"}, "id"=>"25"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT  "entries".* FROM "entries" WHERE "entries"."id" = ? LIMIT 1  [["id", 25]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "entries" SET "status" = ?, "updated_at" = ? WHERE "entries"."id" = ?  [["status", "completed"], ["updated_at", "2016-08-02 14:52:26.636379"], ["id", 25]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 10ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 10:52:26 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 1]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 2]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 3]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 4]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 5]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 6]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (22.8ms)
+  Rendered layouts/_user_form.html.erb (5.0ms)
+  Rendered users/_edit_user_profile_modal.html.erb (6.2ms)
+  Rendered layouts/_entry_form.html.erb (50.6ms)
+  Rendered entries/_new_entry_modal.html.erb (52.2ms)
+Completed 200 OK in 160ms (Views: 156.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/entries" for ::1 at 2016-08-02 10:52:34 -0400
+Processing by EntriesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mEntry Load (0.7ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?  [["user_id", 3], ["status", "incomplete"]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?[0m  [["user_id", 3], ["status", "completed"]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "entries"."status" = ?  [["user_id", 3], ["status", "abandoned"]]
+  Rendered entries/index.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_user_form.html.erb (9.5ms)
+  Rendered users/_edit_user_profile_modal.html.erb (11.7ms)
+  Rendered layouts/_entry_form.html.erb (1.8ms)
+  Rendered entries/_new_entry_modal.html.erb (2.9ms)
+Completed 200 OK in 234ms (Views: 201.6ms | ActiveRecord: 1.7ms)
+  [1m[35mCategory Load (6.3ms)[0m  SELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" WHERE (status = 'completed') GROUP BY "categories"."id"  ORDER BY count(*) desc LIMIT 1
+
+
+Started GET "/users/3" for ::1 at 2016-08-02 11:05:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCategory Load (0.9ms)[0m  SELECT "categories".* FROM "categories" INNER JOIN "user_categories" ON "categories"."id" = "user_categories"."category_id" WHERE "user_categories"."user_id" = ?  [["user_id", 3]]
+  [1m[36mEntry Load (0.2ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 1]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 2]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 3]]
+  [1m[35mEntry Load (0.1ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 4]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 5]]
+  [1m[35mEntry Load (0.2ms)[0m  SELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?  [["category_id", 6]]
+  [1m[36mEntry Load (0.1ms)[0m  [1mSELECT "entries".* FROM "entries" INNER JOIN "user_categories" ON "entries"."user_category_id" = "user_categories"."id" WHERE "user_categories"."category_id" = ?[0m  [["category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (59.5ms)
+  Rendered layouts/_user_form.html.erb (11.6ms)
+  Rendered users/_edit_user_profile_modal.html.erb (17.8ms)
+  Rendered layouts/_entry_form.html.erb (3.8ms)
+  Rendered entries/_new_entry_modal.html.erb (6.5ms)
+Completed 200 OK in 249ms (Views: 201.7ms | ActiveRecord: 4.2ms)
+  [1m[36mCategory Load (8.4ms)[0m  [1mSELECT  "categories".* FROM "categories" INNER JOIN "user_categories" ON "user_categories"."category_id" = "categories"."id" INNER JOIN "entries" ON "entries"."user_category_id" = "user_categories"."id" WHERE (status = 'completed') GROUP BY "categories"."id"  ORDER BY count(*) desc LIMIT 1[0m
