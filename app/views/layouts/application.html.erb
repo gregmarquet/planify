@@ -8,7 +8,7 @@
 <body>
   <% if current_user %>
     <%= render "/users/edit_user_profile_modal" %>
-    <%= render "/entries/new_entry_modal" %>
+    <%= render "/tasks/new_task_modal" %>
   <% else %>
     <%= render "layouts/login_modal" %>
     <%= render "layouts/sign_up_modal" %>
@@ -33,7 +33,7 @@
         
           <% if current_user %>
           
-            <%= link_to 'My Entries', entries_path, method: 'get' %>
+            <%= link_to 'My Tasks', tasks_path, method: 'get' %>
             <%= link_to 'My Stats', stats_path, method: 'get' %>
               
           <% end %>

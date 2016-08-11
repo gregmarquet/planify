@@ -4,17 +4,17 @@
     <% @user.categories.each do |category|%>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 categories" id="category-<%= category.id %>">
         <h4><%= category.name %></h4>
-          <% category.entries.each do |entry|%>
+          <% category.tasks.each do |task|%>
             <div class='well'>
-              <%= entry.title %>
+              <%= task.title %>
               </br>
-              <%= button_to 'Delete', entry_path(entry), :method => :delete %>
-              <%= button_to 'Completed', entry_path(entry), :method => :put, params: {:"entry[status]" => "completed"} %>
-              <%= button_to 'Abandoned', entry_path(entry), :method => :put, params: {:"entry[status]" => "abandoned"} %>
+              <%= button_to 'Delete', task_path(task), :method => :delete %>
+              <%= button_to 'Completed', task_path(task), :method => :put, params: {:"task[status]" => "completed"} %>
+              <%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"} %>
             </div>
           <% end %>
         <div>
-          <%= link_to 'Add Entry...', "#", data: {toggle: "modal", target: "#newEntryModal"}, class: "entry_form_link", id: category.id %>
+          <%= link_to 'Add task...', "#", data: {toggle: "modal", target: "#newtaskModal"}, class: "task_form_link", id: category.id %>
         </div>
       </div>
     <% end %>

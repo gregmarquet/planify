@@ -8,12 +8,13 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string
+#  admin           :boolean          default("f")
 #
 
 class User < ActiveRecord::Base
   has_many :user_categories
   has_many :categories, through: :user_categories
-  has_many :entries, through: :user_categories
+  has_many :tasks, through: :user_categories
   has_many :scores, through: :user_categories
   has_secure_password
 

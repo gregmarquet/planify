@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root 'welcome#index'
-  resources :entries
+  resources :tasks
   resources :sessions, only: [:create, :destroy]
   resources :users, except: [:destroy]
   resources :stats, only: [:index]

@@ -1,0 +1,14 @@
+<ul class="list-group">
+  <h3>Incomplete</h3>
+  <% @tasks.incomplete.each do |task| %>
+    <li class="list-group-item"><%= task.title %></li>
+  <% end %>
+  <h3>Completed</h3>
+  <% @tasks.completed.each do |task| %>
+    <li class="list-group-item"><%= task.title %></li>
+  <% end %>
+  <h3>Abandoned</h3>
+  <% @tasks.abandoned.each do |task| %>
+    <li class="list-group-item"><%= task.title %></li>
+  <% end %> 
+</ul>

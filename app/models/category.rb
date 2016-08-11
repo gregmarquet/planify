@@ -12,15 +12,19 @@
 class Category < ActiveRecord::Base
   has_many :user_categories
   has_many :users, through: :user_categories
-  has_many :entries, through: :user_categories
+  has_many :tasks, through: :user_categories
   has_many :scores, through: :user_categories
 
-  def self.with_most_entries
-    self.joins(:entries).group(:id).order("count(*) desc").first
+  def self.with_most_tasks
+    self.joins(:tasks).group(:id).order("count(*) desc").first
   end
 
-  def self.with_most_completed_entries
-    self.joins(:entries).where("status = ?", "completed").group(:id).order("count(*) desc").first
+  def self.with_most_completed_tasks
+    self.joins(:tasks).where("status = ?", "completed").group(:id).order("count(*) desc").first
+  end
+
+  def self.with_most_abandoned_tasks
+    self.joins(:tasks).where("status = ?", "abandoned").group(:id).order("count(*) desc").first
   end
 
   

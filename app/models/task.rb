@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: entries
+# Table name: tasks
 #
 #  id               :integer          not null, primary key
 #  title            :string
@@ -8,10 +8,10 @@
 #  user_category_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  status           :string           default("ensure")
+#  status           :string           default("incomplete")
 #
 
-class Entry < ActiveRecord::Base
+class Task < ActiveRecord::Base
   belongs_to :user_category
 
   validates :title, presence: true

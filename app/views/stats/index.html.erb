@@ -1,3 +1,7 @@
 <h3>My Stats</h3>
-<p>The category for which you have created the most entries is <%= @category_with_most_entries.name %></p>
-<p>The category for with the most completed entries is <%= @category_with_most_completed_entries.name %></p>
+<p>The category for which you have created the most tasks is <%= @category_with_most_tasks.name %></p>
+<p>The category with the most completed tasks is <%= @category_with_most_completed_tasks.name %></p>
+<p>The category with the most abandoned tasks is <%= @category_with_most_abandoned_tasks.name %></p>
+<p>The total number of tasks is <%= @total_number_of_tasks %></p>
+
+<%= pie_chart Task.joins(:user_category => [:category]).group('categories.name').count %>
