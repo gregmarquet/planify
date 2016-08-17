@@ -9,6 +9,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  status           :string           default("incomplete")
+#  modified_at      :datetime
 #
 
 class Task < ActiveRecord::Base
@@ -22,6 +23,14 @@ class Task < ActiveRecord::Base
 
   def category
     self.user_category.category
+  end
+
+  def update_and_modify!(attributes)
+    self.update(attributes)
+    if self.status == 'completed' || self.status == 'abandoned'
+      self.modified_at = Time.now
+      self.save
+    end
   end
 
   def self.incomplete

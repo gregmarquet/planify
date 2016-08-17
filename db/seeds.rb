@@ -12,3 +12,7 @@
   Category.create(name: 'Career')
   Category.create(name: 'Finance')
   Category.create(name: 'Personal Growth')
+
+  5.times do |user|
+    User.create(username: Faker::Internet.user_name, email: Faker::Internet.email)
+  end

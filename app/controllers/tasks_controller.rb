@@ -30,10 +30,9 @@ class TasksController < ApplicationController
   end
 
   def update
-    # byebug
     @user = current_user
     @task = Task.find(params[:id])
-    @task.update(task_params)
+    @task.update_and_modify!(task_params)
     redirect_to user_path(@user)
   end
 

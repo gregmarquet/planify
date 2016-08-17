@@ -5,3 +5,8 @@
 <p>The total number of tasks is <%= @total_number_of_tasks %></p>
 
 <%= pie_chart Task.joins(:user_category => [:category]).group('categories.name').count %>
+
+<%= line_chart Task.group("strftime('%Y-%m-%d', tasks.created_at)").count %>
+
+<%= line_chart Task.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count %>
+
