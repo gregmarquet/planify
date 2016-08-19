@@ -29,5 +29,20 @@ class User < ActiveRecord::Base
     user
   end
 
+  def category_with_most_tasks
+    user_category = user_categories.with_most_tasks
+    user_category.category if user_category
+  end
+
+  def category_with_most_completed_tasks
+    user_category = user_categories.with_most_completed_tasks
+    user_category.category if user_category
+  end
+
+  def category_with_most_abandoned_tasks
+    user_category = user_categories.with_most_abandoned_tasks
+    user_category.category if user_category
+  end
+
 end
 

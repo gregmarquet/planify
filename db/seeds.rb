@@ -14,5 +14,8 @@
   Category.create(name: 'Personal Growth')
 
   5.times do |user|
-    User.create(username: Faker::Internet.user_name, email: Faker::Internet.email)
+    user =User.new_with_categories(username: Faker::Internet.user_name, email: Faker::Internet.email)
+    user.save
   end
+
+  

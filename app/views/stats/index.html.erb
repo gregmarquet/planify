@@ -1,12 +1,23 @@
 <h3>My Stats</h3>
-<p>The category for which you have created the most tasks is <%= @category_with_most_tasks.name %></p>
-<p>The category with the most completed tasks is <%= @category_with_most_completed_tasks.name %></p>
-<p>The category with the most abandoned tasks is <%= @category_with_most_abandoned_tasks.name %></p>
-<p>The total number of tasks is <%= @total_number_of_tasks %></p>
+<% if @user.category_with_most_tasks %>
+<p>The category for which you have created the most tasks is <%= @user.category_with_most_tasks.name %></p>
+<% end %>
+<% if @user.category_with_most_completed_tasks %>
+<p>The category with the most completed tasks is <%= @user.category_with_most_completed_tasks.name %></p>
+<% end %>
+<% if @user.category_with_most_abandoned_tasks %>
+<p>The category with the most abandoned tasks is <%= @user.category_with_most_abandoned_tasks.name %></p>
+<% end %>
+<p>The total number of tasks is <%= @user.tasks.count %></p>
 
-<%= pie_chart Task.joins(:user_category => [:category]).group('categories.name').count %>
+<%= pie_chart @user.tasks.joins(:user_category => [:category]).group('categories.name').count %>
 
-<%= line_chart Task.group("strftime('%Y-%m-%d', tasks.created_at)").count %>
 
-<%= line_chart Task.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count %>
+<% if !@user.tasks.empty?%>
+  <%= line_chart [
+    {name: "Tasks created", data: @user.tasks.group("strftime('%Y-%m-%d', tasks.created_at)").count},
+    {name: "Tasks completed", data: @user.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
+    {name: "Tasks abandoned", data: @user.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
+  ] %>
+<% end %>
 
