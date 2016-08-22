@@ -27714,3 +27714,315 @@ Processing by UsersController#show as HTML
   Rendered layouts/_task_form.html.erb (2.3ms)
   Rendered tasks/_new_task_modal.html.erb (4.4ms)
 Completed 200 OK in 190ms (Views: 184.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/tasks" for ::1 at 2016-08-22 08:39:00 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (6.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTask Exists (0.4ms)[0m  SELECT  1 AS one FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36mTask Load (0.7ms)[0m  [1mSELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?[0m  [["user_id", 1], ["status", "incomplete"]]
+  [1m[35mTask Load (0.7ms)[0m  SELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?  [["user_id", 1], ["status", "completed"]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?[0m  [["user_id", 1], ["status", "abandoned"]]
+  Rendered tasks/index.html.erb within layouts/application (36.8ms)
+  Rendered layouts/_user_form.html.erb (15.3ms)
+  Rendered users/_edit_user_profile_modal.html.erb (18.9ms)
+  Rendered layouts/_task_form.html.erb (8.3ms)
+  Rendered tasks/_new_task_modal.html.erb (11.2ms)
+Completed 200 OK in 583ms (Views: 516.7ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:39:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUserCategory Load (0.3ms)[0m  [1mSELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 2]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTask Load (0.5ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 3]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 5]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mTask Load (0.6ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 6]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (72.2ms)
+  Rendered layouts/_user_form.html.erb (3.3ms)
+  Rendered users/_edit_user_profile_modal.html.erb (6.1ms)
+  Rendered layouts/_task_form.html.erb (1.7ms)
+  Rendered tasks/_new_task_modal.html.erb (4.0ms)
+Completed 200 OK in 173ms (Views: 166.2ms | ActiveRecord: 4.7ms)
+
+
+Started DELETE "/tasks/43" for ::1 at 2016-08-22 08:39:32 -0400
+Processing by TasksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"raUr0coQKrs0QnY35lmRVXm9r/lxrvaBB7qZlmpz6q++Fwnn8Ziyn9AwQyJi+ujTy4+ifbH+PdWda4S9Vt587g==", "id"=>"43"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", 43]]
+  [1m[35m (2.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mDELETE FROM "tasks" WHERE "tasks"."id" = ?[0m  [["id", 43]]
+  [1m[35m (2.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 26ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:39:33 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mUserCategory Load (0.2ms)[0m  SELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 2]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 3]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 4]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 5]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 5]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 6]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 6]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 7]]
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (26.1ms)
+  Rendered layouts/_user_form.html.erb (4.1ms)
+  Rendered users/_edit_user_profile_modal.html.erb (6.0ms)
+  Rendered layouts/_task_form.html.erb (5.7ms)
+  Rendered tasks/_new_task_modal.html.erb (8.4ms)
+Completed 200 OK in 109ms (Views: 106.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/tasks" for ::1 at 2016-08-22 08:39:37 -0400
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mTask Exists (0.1ms)[0m  SELECT  1 AS one FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?[0m  [["user_id", 1], ["status", "incomplete"]]
+  [1m[35mTask Load (0.2ms)[0m  SELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?  [["user_id", 1], ["status", "completed"]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ?[0m  [["user_id", 1], ["status", "abandoned"]]
+  Rendered tasks/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_user_form.html.erb (2.5ms)
+  Rendered users/_edit_user_profile_modal.html.erb (3.7ms)
+  Rendered layouts/_task_form.html.erb (2.6ms)
+  Rendered tasks/_new_task_modal.html.erb (4.2ms)
+Completed 200 OK in 86ms (Views: 83.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:39:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUserCategory Load (0.2ms)[0m  [1mSELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.9ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 3]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 4]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 5]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 6]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (27.5ms)
+  Rendered layouts/_user_form.html.erb (4.5ms)
+  Rendered users/_edit_user_profile_modal.html.erb (6.6ms)
+  Rendered layouts/_task_form.html.erb (2.3ms)
+  Rendered tasks/_new_task_modal.html.erb (4.2ms)
+Completed 200 OK in 104ms (Views: 97.4ms | ActiveRecord: 3.3ms)
+
+
+Started PUT "/tasks/84" for ::1 at 2016-08-22 08:39:51 -0400
+Processing by TasksController#update as HTML
+  Parameters: {"authenticity_token"=>"kDAEB20TEfIeZcBnPy68EdR7hI3Gx2X7MC+Uxiy69fCDgiYxVpuJ1voX9XK7jcWXZkmJCQaXrq+q/ontEBdjsQ==", "task"=>{"status"=>"completed"}, "id"=>"84"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT  "tasks".* FROM "tasks" WHERE "tasks"."id" = ? LIMIT 1[0m  [["id", 84]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE "tasks" SET "status" = ?, "updated_at" = ? WHERE "tasks"."id" = ?[0m  [["status", "completed"], ["updated_at", "2016-08-22 12:39:51.104961"], ["id", 84]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "tasks" SET "modified_at" = ?, "updated_at" = ? WHERE "tasks"."id" = ?  [["modified_at", "2016-08-22 12:39:51.120310"], ["updated_at", "2016-08-22 12:39:51.121122"], ["id", 84]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 29ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:39:51 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUserCategory Load (0.1ms)[0m  [1mSELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 3]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 5]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 6]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (238.8ms)
+  Rendered layouts/_user_form.html.erb (9.9ms)
+  Rendered users/_edit_user_profile_modal.html.erb (12.2ms)
+  Rendered layouts/_task_form.html.erb (1.6ms)
+  Rendered tasks/_new_task_modal.html.erb (3.1ms)
+Completed 200 OK in 346ms (Views: 343.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/stats" for ::1 at 2016-08-22 08:39:55 -0400
+Processing by StatsController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "tasks"[0m
+  [1m[35mUserCategory Load (0.4ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mUserCategory Load (0.2ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND (status = 'completed') GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND (status = 'completed') GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mUserCategory Load (0.2ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND (status = 'abandoned') GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "user_categories".* FROM "user_categories" INNER JOIN "tasks" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND (status = 'abandoned') GROUP BY "user_categories"."id"  ORDER BY count(*) desc LIMIT 1  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (2.3ms)[0m  [1mSELECT COUNT(*) AS count_all, categories.name AS categories_name FROM "tasks" INNER JOIN "user_categories" "user_categories_tasks" ON "user_categories_tasks"."id" = "tasks"."user_category_id" INNER JOIN "categories" ON "categories"."id" = "user_categories_tasks"."category_id" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? GROUP BY categories.name[0m  [["user_id", 1]]
+  [1m[35mTask Exists (0.1ms)[0m  SELECT  1 AS one FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) AS count_all, strftime('%Y-%m-%d', tasks.created_at) AS strftime_y_m_d_tasks_created_at FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? GROUP BY strftime('%Y-%m-%d', tasks.created_at)[0m  [["user_id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) AS count_all, strftime('%Y-%m-%d', tasks.modified_at) AS strftime_y_m_d_tasks_modified_at FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ? GROUP BY strftime('%Y-%m-%d', tasks.modified_at)  [["user_id", 1], ["status", "completed"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) AS count_all, strftime('%Y-%m-%d', tasks.modified_at) AS strftime_y_m_d_tasks_modified_at FROM "tasks" INNER JOIN "user_categories" ON "tasks"."user_category_id" = "user_categories"."id" WHERE "user_categories"."user_id" = ? AND "tasks"."status" = ? GROUP BY strftime('%Y-%m-%d', tasks.modified_at)[0m  [["user_id", 1], ["status", "abandoned"]]
+  Rendered stats/index.html.erb within layouts/application (27.9ms)
+  Rendered layouts/_user_form.html.erb (3.9ms)
+  Rendered users/_edit_user_profile_modal.html.erb (6.2ms)
+  Rendered layouts/_task_form.html.erb (1.9ms)
+  Rendered tasks/_new_task_modal.html.erb (4.1ms)
+Completed 200 OK in 169ms (Views: 162.9ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:40:34 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUserCategory Load (0.2ms)[0m  [1mSELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTask Load (1.8ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 3]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 5]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 6]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (23.8ms)
+  Rendered layouts/_user_form.html.erb (2.9ms)
+  Rendered users/_edit_user_profile_modal.html.erb (4.7ms)
+  Rendered layouts/_task_form.html.erb (1.6ms)
+  Rendered tasks/_new_task_modal.html.erb (3.5ms)
+Completed 200 OK in 142ms (Views: 122.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/users/1" for ::1 at 2016-08-22 08:46:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUserCategory Load (0.2ms)[0m  [1mSELECT "user_categories".* FROM "user_categories" WHERE "user_categories"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 1]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 2]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 3]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 3]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mTask Load (0.1ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 4]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 5]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 5]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 6]]
+  [1m[35mCategory Load (0.1ms)[0m  SELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT 1  [["id", 7]]
+  [1m[36mTask Load (0.2ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_category_id" = ?[0m  [["user_category_id", 7]]
+  Rendered users/show.html.erb within layouts/application (43.9ms)
+  Rendered layouts/_user_form.html.erb (7.1ms)
+  Rendered users/_edit_user_profile_modal.html.erb (11.4ms)
+  Rendered layouts/_task_form.html.erb (3.4ms)
+  Rendered tasks/_new_task_modal.html.erb (5.8ms)
+Completed 200 OK in 288ms (Views: 271.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/application.self-feab6a0810eaceaa7cc11a2879fc05b9b6af7b0ef3efa5bcde3471aa19eef81c.css?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/Chart.bundle.self-b67dc6369d03ee81146111867404935133a0ab5d9595fa92a7731c5317a6127b.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/chartkick.self-932c9c939347486f8354893647909c55dbecc256c9195b21ad2820ed21071625.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/task.self-bbf205f22b396718739e1283d4555e17cc982c02a8db83b1f4360ff76029d7a6.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
+
+
+Started GET "/assets/application.self-16c207b3ca1b52afcfc7f4b662487caf1bbe084a6656bb15f693ab9de2d11be7.js?body=1" for ::1 at 2016-08-22 08:46:44 -0400
