@@ -3,10 +3,13 @@
 
 
 <% if !@user_category.tasks.empty?%>
+
+  <%= pie_chart @user_category.tasks.group('tasks.status').count, colors: ["pink", "#999", "grey"]  %>
+
   <%= line_chart [
     {name: "Tasks created", data: @user_category.tasks.group("strftime('%Y-%m-%d', tasks.created_at)").count},
     {name: "Tasks completed", data: @user_category.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
     {name: "Tasks abandoned", data: @user_category.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
-  ] %>
+  ], colors: ["pink", "#999", "grey"] %>
 <% end %>
 
