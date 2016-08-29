@@ -13,8 +13,10 @@
     <%= render "layouts/login_modal" %>
     <%= render "layouts/sign_up_modal" %>
   <% end %>
+
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
+
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -22,25 +24,38 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <% if current_user %>
-          <%= link_to "Planify", user_path(current_user) %>
+          <%= link_to "Planify", user_path(current_user), class: "navbar-brand"  %>
         <% else %>
-          <%= link_to "Planify", root_path %>
+          <%= link_to "Planify", root_path, class: "navbar-brand"  %>
         <% end %>
       </div>
+
       <div id="navbar" class="navbar-collapse collapse">
 
-        
-          <% if current_user %>
-          
-            <%= link_to 'My Tasks', tasks_path, method: 'get' %>
-            <%= link_to 'My Stats', stats_path, method: 'get' %>
+        <% if current_user %>    
+
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+          <li><%= link_to 'Tasks', tasks_path, method: 'get' %></li>
+          <li><%= link_to 'Stats', stats_path, method: 'get' %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <% @user.user_categories.each do |user_category|%>
+              <li><a href="#"><%= link_to user_category.category.name, user_user_category_path(@user, user_category) %></a></li>
+            <% end %>  
+            </ul>
+          </li>
+        </ul>
               
-          <% end %>
-        
+        <% end %>
 
         <ul class="nav navbar-nav navbar-right">
+
           <% if current_user %>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -49,14 +64,15 @@
                  <li><%= link_to 'Log Out', logout_path, method: 'get' %></li>
               </ul>
             </li>
+
           <% else %>
-            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#signUpModal">
-              Sign Up
-            </button>
-            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">
-            Log In
-            </button>
+
+            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#signUpModal">Sign Up</button>              
+            
+            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">Log In</button>
+                         
           <% end %>
+          
         </ul>
       </div>
     </div>
