@@ -1,8 +1,38 @@
+<div class="container">
+<h2 class="text-center"><%= @user_category.category.name %></h2>
+<!-- <div class="container container-fluid task-list "> -->
+<% if @user_category.tasks.where(status: "incomplete").empty? %>
+  <div class="alert alert-danger" role="alert">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
 
-<h3><%= @user_category.category.name %></h3>
+<% else %>
 
+  <div class="row">
+    <ul class="list-group">
 
-<% if !@user_category.tasks.empty?%>
+    <% @user_category.tasks.each do |task|%>
+      <% if task.status ==  "incomplete"%>
+        <li class = "list-group-item"><%= task.title %>
+
+          <div class="btn-group pull-right" role="group">      
+            <span class="glyphicon glyphicon-option-horizontal dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span> 
+
+            <ul class="dropdown-menu">
+              <li><%= button_to 'Delete', task_path(task), :method => :delete %></li>
+              <li><%= button_to 'Completed', task_path(task), :method => :put, params: {:"task[status]" => "completed"} %></li>
+              <li><%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"} %></li>
+            </ul>
+          </div>
+        </li>
+            
+      <% end %>
+    <% end %>
+    <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
+    </ul>
+  </div>
+
+  <% end %>
+  <div>
+  <% if !@user_category.tasks.empty?%>
 
   <%= pie_chart @user_category.tasks.group('tasks.status').count, colors: ["pink", "#999", "grey"]  %>
 
@@ -11,5 +41,7 @@
     {name: "Tasks completed", data: @user_category.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
     {name: "Tasks abandoned", data: @user_category.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
   ], colors: ["pink", "#999", "grey"] %>
-<% end %>
+  <% end %>
+  </div>
+</div>
 

@@ -1,11 +1,21 @@
-a {
+.navbar {
   font-size: 1.5em;
 }
 
-.navbar {
-  /*font-size: 20px;*/
+.navbar-brand {
+  font-size: 1.5em;
 }
 
+.task-list {
+  border: 1px solid red;
+}
+.row {
+  border: 1px solid blue;
+}
+.list-group-item{
+  vertical-align: middle;
+  font-size: 1.2em;
+}
 
 
 .categories {
