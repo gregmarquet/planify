@@ -31,6 +31,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    # binding.pry
     @user = current_user
     @task = Task.find(params[:id])
     @user_category = @task.user_category
