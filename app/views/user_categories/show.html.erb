@@ -1,5 +1,5 @@
 <div class="container">
-<h2 class="text-center m-b-50-px"><%= @user_category.category.name %></h2>
+<h1 class="text-center m-t-50-px m-b-50-px"><%= @user_category.category.name %></h1>
 
 <!--//////////////////////////////////////////////////-->
 <!--                 List Of Tasks                    -->
@@ -11,7 +11,7 @@
 
 <% else %>
 
-  <div class="row">
+  <div class="row m-b-50-px">
     <ul class="list-group col-sm-8 col-sm-offset-2">
 
     <% @user_category.tasks.each do |task|%>
@@ -36,45 +36,42 @@
   </div>
 
   <% end %>
-  <div>
+
+<!-- - - - - - - - - - - Stats - - - - - - - - - - - --> 
+
+  <% if !@user_category.tasks.empty?%>
+
+  <h2 class="text-center m-b-50-px">Some stats</h2> 
+
+  <!--//////////////////////////////////////////////////-->
+  <!--              Stats Descriptions                  -->
+  <!--//////////////////////////////////////////////////-->
+
+  <div class="well font-blocks text-center m-b-50-px">
+
+    <p>For <span class="underlined"><%= @user_category.category.name %></span>:</p>
+
+    <p>You created <%= @user_category.tasks.count %> tasks.</p>
+
+    <p>You have <%= @user_category.tasks.where(status: 'incomplete').count %> active tasks.</p>
+    
+    <p>You completed <%= @user_category.tasks.where(status: 'completed').count %> tasks.</p>
+     
+    <p>You abandonned <%= @user_category.tasks.where(status: 'abandoned').count %> tasks.</p>
+    
+  </div>
+
 
 <!--//////////////////////////////////////////////////-->
 <!--                   Pie Chart                      -->
 <!--//////////////////////////////////////////////////-->
 
-
-  <% if !@user_category.tasks.empty?%>
+  <div class="m-b-50-px">
 
   <%= pie_chart @user_category.tasks.group('tasks.status').count, colors: ["pink", "#999", "grey"]  %>
 
-<!--//////////////////////////////////////////////////-->
-<!--              Stats Descriptions                  -->
-<!--//////////////////////////////////////////////////-->
-
-  <p>You created <%= @user_category.tasks.count %> tasks.</p>
-
-  <p>You have <%= @user_category.tasks.where(status: 'incomplete').count %> active tasks.</p>
-  
-  <p>You completed <%= @user_category.tasks.where(status: 'completed').count %> tasks.</p>
-   
-  <p>You abandonned <%= @user_category.tasks.where(status: 'abandoned').count %> tasks.</p>
-  
-<!--//////////////////////////////////////////////////-->
-<!--                    Line Chart                    -->
-<!--//////////////////////////////////////////////////-->
-
-
-    <% if false #-----\/----\/----\/---- %>
-
-      <%= line_chart [
-        {name: "Tasks created", data: @user_category.tasks.group("strftime('%Y-%m-%d', tasks.created_at)").count},
-        {name: "Tasks completed", data: @user_category.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
-        {name: "Tasks abandoned", data: @user_category.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
-      ], colors: ["pink", "#999", "grey"] %>
-      <% end %>
-
-    <% end #____/\____/\____/\____/\-------%>
-
   </div>
+  <% end %>
+  
 </div>
 

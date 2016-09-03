@@ -3,7 +3,7 @@
   <div class="row">
     <% @user.user_categories.each do |user_category|%>
       <div class="col-sm-4 col-sm-offset-1 categories" id="category-<%= user_category.category_id %>">
-        <h4><%= link_to user_category.category.name, user_user_category_path(@user, user_category) %><span class="tag tag-default tag-pill pull-right"><%= user_category.tasks.where(status: "incomplete").count%></span></h4>                  
+        <h4 class="category-text"><%= link_to user_category.category.name, user_user_category_path(@user, user_category) %><span class="tag tag-default tag-pill pull-right"><%= user_category.tasks.where(status: "incomplete").count%></span></h4>                  
       </div>
     <% end %>
   </div>

@@ -1,14 +1,20 @@
-<h3>My Stats</h3>
-<% if @user.category_with_most_tasks %>
-<p>The category for which you have created the most tasks is <%= @user.category_with_most_tasks.name %></p>
-<% end %>
-<% if @user.category_with_most_completed_tasks %>
-<p>The category with the most completed tasks is <%= @user.category_with_most_completed_tasks.name %></p>
-<% end %>
-<% if @user.category_with_most_abandoned_tasks %>
-<p>The category with the most abandoned tasks is <%= @user.category_with_most_abandoned_tasks.name %></p>
-<% end %>
-<p>The total number of tasks is <%= @user.tasks.count %></p>
+<div class="container">
+
+  <h2 class="text-center m-b-50-px">My Stats</h2>
+
+<div class="well font-blocks text-center m-b-50-px">
+  <% if @user.category_with_most_tasks %>
+  <p>The category for which you have created the most tasks is <%= @user.category_with_most_tasks.name %></p>
+  <% end %>
+  <% if @user.category_with_most_completed_tasks %>
+  <p>The category with the most completed tasks is <%= @user.category_with_most_completed_tasks.name %></p>
+  <% end %>
+  <% if @user.category_with_most_abandoned_tasks %>
+  <p>The category with the most abandoned tasks is <%= @user.category_with_most_abandoned_tasks.name %></p>
+  <% end %>
+  <p>The total number of tasks created is <%= @user.tasks.count %></p>
+
+</div>
 
 <%= pie_chart @user.tasks.joins(:user_category => [:category]).group('categories.name').count %>
 
@@ -20,4 +26,6 @@
     {name: "Tasks abandoned", data: @user.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
   ] %>
 <% end %>
+
+</div>
 

@@ -3,15 +3,15 @@
 <% else %>
 <div class="row">
   <ul class="list-group col-sm-8 col-sm-offset-2">
-    <h3 class="text-center">Incomplete</h3>
+    <h3 class="text-center m-t-50-px m-b-30-px">Incomplete</h3>
     <% @tasks.incomplete.each do |task| %>
       <li class="list-group-item"><%= task.title %></li>
     <% end %>
-    <h3 class="text-center">Completed</h3>
+    <h3 class="text-center m-t-50-px m-b-30-px">Completed</h3>
     <% @tasks.completed.each do |task| %>
       <li class="list-group-item"><%= task.title %></li>
     <% end %>
-    <h3 class="text-center">Abandoned</h3>
+    <h3 class="text-center m-t-50-px m-b-30-px">Abandoned</h3>
     <% @tasks.abandoned.each do |task| %>
       <li class="list-group-item"><%= task.title %></li> 
     <% end %> 

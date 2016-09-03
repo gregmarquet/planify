@@ -16,8 +16,15 @@
 }
 
 .categories {
-  border: 1px solid red;
-  border-radius: 3px;
+  min-height: 200px;
+  max-width: 470px;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  line-height: 100px;
+}
+
+.category-text {
+  font-size: 20px;
 }
 
 .m-t-50-px {
@@ -42,6 +49,10 @@
 
 .p-y-20 {
   padding: 20px 0;
+}
+
+.p-l-30 {
+  padding: 0 15px 0 30px;
 }
 
 .jumbotron-quote {
@@ -71,6 +82,12 @@
 
 .border {
   border: 1px solid red;
+}
+
+.underlined {
+  font-style: italic;
+  // text-decoration: underline;
+
 }
 
 .goal-img {
@@ -132,4 +149,53 @@
   color: white;
   height: 30px;
   width: 30px;
+}
+
+#category-1 {
+  background: url(image-path("Fitness&body.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-2 {
+  background: url(image-path("Mind&Soul.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-3 {
+  background: url(image-path("Love.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-4 {
+  background: url(image-path("Friends&Family.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-5 {
+  background: url(image-path("Career.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-6 {
+  background: url(image-path("finance.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
+}
+
+#category-7 {
+  background: url(image-path("PersonalGrowth.jpg"));
+  background-position: center;
+  background-size: cover;
+  // min-height: 100px;
 }
