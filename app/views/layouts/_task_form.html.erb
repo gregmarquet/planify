@@ -1,5 +1,5 @@
-<div class='text-center'>
-  <%= form_for @task do |f| %>
+<div class='text-center' id="new_task_form">
+  <%= form_for(@task, remote: true) do |f| %>
     <input type="hidden" name="user_id" value="<%= @user.id %>">
     <input type="hidden" name="category_id" value="category">
     <% if @task.errors.any? %>

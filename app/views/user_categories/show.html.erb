@@ -12,27 +12,17 @@
 <% else %>
 
   <div class="row m-b-50-px">
-    <ul class="list-group col-sm-8 col-sm-offset-2">
+    <ul class="list-group col-sm-8 col-sm-offset-2" id="list-of-class" >
 
     <% @user_category.tasks.each do |task|%>
       <% if task.status ==  "incomplete"%>
-        <li class = "list-group-item"><%= task.title %>
-
-          <div class="btn-group pull-right" role="group">      
-            <span class="glyphicon glyphicon-option-horizontal dropdown-toggle" aria-hidden="true" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span> 
-
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Delete', task_path(task), :method => :delete %></li>
-              <li><%= button_to 'Completed', task_path(task), :method => :put, params: {:"task[status]" => "completed"} %></li>
-              <li><%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"} %></li>
-            </ul>
-          </div>
-        </li>
+        
+        <%= render partial: "layouts/task", locals: {task: task} %>
             
       <% end %>
     <% end %>
-    <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
     </ul>
+    <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
   </div>
 
   <% end %>
@@ -51,13 +41,13 @@
 
     <p>For <span class="underlined"><%= @user_category.category.name %></span>:</p>
 
-    <p>You created <%= @user_category.tasks.count %> tasks.</p>
+    <p>You created <%= pluralize(@user_category.tasks.count, "task") %>.</p>
 
-    <p>You have <%= @user_category.tasks.where(status: 'incomplete').count %> active tasks.</p>
+    <p>You have <%= pluralize(@user_category.tasks.where(status: 'incomplete').count, "active task") %>.</p>
     
-    <p>You completed <%= @user_category.tasks.where(status: 'completed').count %> tasks.</p>
+    <p>You completed <%= pluralize(@user_category.tasks.where(status: 'completed').count, "task") %>.</p>
      
-    <p>You abandonned <%= @user_category.tasks.where(status: 'abandoned').count %> tasks.</p>
+    <p>You abandonned <%= pluralize(@user_category.tasks.where(status: 'abandoned').count, "task") %>.</p>
     
   </div>
 

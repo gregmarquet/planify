@@ -22,7 +22,11 @@ class TasksController < ApplicationController
     @user_category = UserCategory.find_by({user_id: params[:user_id],category_id: params[:category_id]})
     @task.user_category = @user_category
     @task.save
-    redirect_to user_user_category_path(@user, @user_category)
+
+    respond_to do |format|
+      format.html { redirect_to user_user_category_path(@user, @user_category) }
+      format.js
+    end
 
   end
 
@@ -44,7 +48,12 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @user_category = @task.user_category
     @task.destroy
-    redirect_to user_user_category_path(@user, @user_category)
+
+    respond_to do |format|
+      format.html { redirect_to user_user_category_path(@user, @user_category) }
+      format.js
+    end
+    
   end
 
   private
