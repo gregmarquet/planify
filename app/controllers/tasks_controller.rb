@@ -40,7 +40,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @user_category = @task.user_category
     @task.update_and_modify!(task_params)
-    redirect_to user_user_category_path(@user, @user_category)
+    
+    respond_to do |format|
+      format.html { redirect_to user_user_category_path(@user, @user_category) }
+      format.js
+    end
   end
 
   def destroy
