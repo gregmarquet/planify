@@ -1,0 +1,10 @@
+
+  <p>For <span class="underlined"><%= @user_category.category.name %></span>:</p>
+
+  <p>You created <%= pluralize(@user_category.tasks.count, "task") %>.</p>
+
+  <p>You have <%= pluralize(@user_category.tasks.where(status: 'incomplete').count, "active task") %>.</p>
+
+  <p>You completed <%= pluralize(@user_category.tasks.where(status: 'completed').count, "task") %>.</p>
+   
+  <p>You abandoned <%= pluralize(@user_category.tasks.where(status: 'abandoned').count, "task") %>.</p>

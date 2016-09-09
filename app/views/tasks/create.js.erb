@@ -5,3 +5,7 @@ $('#task_title').val('');
 $('#task_description').val('');
 
 $('#list-of-class').append(" <%= j render partial: "layouts/task", locals: {task: @task} %>" );
+
+$('#stats-recap').empty();
+
+$('#stats-recap').append(" <%= j render partial: "layouts/stats_recap" %>");
