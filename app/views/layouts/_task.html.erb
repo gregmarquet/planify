@@ -6,7 +6,7 @@
     <ul class="dropdown-menu">
       <li><%= link_to 'Delete', task_path(task), :method => :delete, remote: true %></li>
       <li><%= button_to 'Completed', task_path(task), :method => :put, params: {:"task[status]" => "completed"}, remote: true %></li>
-      <li><%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"} %></li>
+      <li><%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"}, remote: true %></li>
     </ul>
   </div>
 </li>
