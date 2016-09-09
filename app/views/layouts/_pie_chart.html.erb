@@ -1,0 +1,1 @@
+<%= pie_chart @user_category.tasks.group('tasks.status').count, colors: ["pink", "#999", "grey"]  %>

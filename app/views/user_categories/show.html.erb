@@ -1,5 +1,6 @@
 <div class="container">
-<h1 class="text-center m-t-50-px m-b-50-px"><%= @user_category.category.name %></h1>
+
+  <h1 class="text-center m-t-50-px m-b-50-px"><%= @user_category.category.name %></h1>
 
 <!--//////////////////////////////////////////////////-->
 <!--                 List Of Tasks                    -->
@@ -7,6 +8,7 @@
 
 
 <% if @user_category.tasks.where(status: "incomplete").empty? %>
+
   <div class="alert alert-danger" role="alert">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
 
 <% else %>
@@ -21,15 +23,16 @@
             
       <% end %>
     <% end %>
+
     </ul>
     <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
   </div>
 
-  <% end %>
+<% end %>
 
 <!-- - - - - - - - - - - Stats - - - - - - - - - - - --> 
 
-  <% if !@user_category.tasks.empty?%>
+<% if !@user_category.tasks.empty?%>
 
   <h2 class="text-center m-b-50-px">Some stats</h2> 
 
@@ -44,16 +47,17 @@
   </div>
 
 
-<!--//////////////////////////////////////////////////-->
-<!--                   Pie Chart                      -->
-<!--//////////////////////////////////////////////////-->
+  <!--//////////////////////////////////////////////////-->
+  <!--                   Pie Chart                      -->
+  <!--//////////////////////////////////////////////////-->
 
-  <div class="m-b-50-px">
+  <div class="m-b-50-px" id="pie-chart">
 
-  <%= pie_chart @user_category.tasks.group('tasks.status').count, colors: ["pink", "#999", "grey"]  %>
+  <%= render partial: "layouts/pie_chart" %>
 
   </div>
-  <% end %>
+
+<% end %>
   
 </div>
 
