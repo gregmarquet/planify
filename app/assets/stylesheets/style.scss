@@ -13,6 +13,14 @@
 .list-group-item{
   font-size: 1.2em;
   background-color: #f8f8f8;
+  color: #333333;
+}
+
+.list-group a .descriptions{
+  font-size: 0.8em;
+  padding-left: 10px;
+  color: #a1a1a1;
+  
 }
 
 .categories {
@@ -20,7 +28,27 @@
   max-width: 470px;
   border-radius: 6px;
   margin-bottom: 30px;
-  line-height: 100px;
+  padding: 10px;
+  // line-height: 100px;
+}
+
+.categories {
+  // vertical-align: middle;
+  font-size: 2.5rem;
+  color: black;
+  text-decoration: none;
+  // line-height: 300px;
+}
+
+.categories span {
+
+}
+
+.categories p {
+  background-color: white;
+  opacity: 0.5;
+  margin: -10px -10px -35px -10px;
+  padding: 0 10px;
 }
 
 .category-text {
@@ -149,19 +177,26 @@
   color: white;
   height: 30px;
   width: 30px;
+
 }
 
 #category-1 {
   background: url(image-path("Fitness&body.jpg"));
   background-position: center;
   background-size: cover;
+  float: left;
+  margin-left: 2rem;
   // min-height: 100px;
+  // margin-left: 4rem;
+  // margin-right: 10rem;
 }
 
 #category-2 {
   background: url(image-path("Mind&Soul.jpg"));
   background-position: center;
   background-size: cover;
+  float: right;
+  margin-right: 2rem;
   // min-height: 100px;
 }
 
@@ -169,13 +204,15 @@
   background: url(image-path("Love.jpg"));
   background-position: center;
   background-size: cover;
+  float: left;
   // min-height: 100px;
 }
 
 #category-4 {
-  background: url(image-path("Friends&Family.jpg"));
+  background: url(image-path("Friends&Family2.jpg"));
   background-position: center;
   background-size: cover;
+  float: right;
   // min-height: 100px;
 }
 
@@ -194,8 +231,13 @@
 }
 
 #category-7 {
-  background: url(image-path("PersonalGrowth.jpg"));
+  background: url(image-path("PersonalGrowth2.jpg"));
   background-position: center;
   background-size: cover;
   // min-height: 100px;
 }
+
+.list-group a {
+  text-decoration: none;
+}
+
