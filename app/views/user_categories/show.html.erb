@@ -6,29 +6,31 @@
 <!--                 List Of Tasks                    -->
 <!--//////////////////////////////////////////////////-->
 
+<div id="all-task">
 
-<% if @user_category.tasks.where(status: "incomplete").empty? %>
+  <% if @user_category.tasks.where(status: "incomplete").empty? %>
 
-  <div class="alert alert-danger" role="alert">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
+    <div class="alert alert-danger" role="alert" id="alert-<%=@user_category.category_id %>">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
 
-<% else %>
+  <% end %>
 
-  <div class="row m-b-50-px">
-    <ul class="list-group col-sm-8 col-sm-offset-2" id="list-of-class" >
+    <div class="row m-b-50-px">
+      <ul class="list-group col-sm-8 col-sm-offset-2" id="list-of-class" >
 
-    <% @user_category.tasks.each do |task|%>
-      <% if task.status ==  "incomplete"%>
-        
-        <%= render partial: "layouts/task", locals: {task: task} %>
-            
+      <% @user_category.tasks.each do |task|%>
+        <% if task.status ==  "incomplete"%>
+          
+          <%= render partial: "layouts/task", locals: {task: task} %>
+              
+        <% end %>
       <% end %>
-    <% end %>
 
-    </ul>
-    <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
-  </div>
+      </ul>
+      <%= link_to "Create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>
+    </div>
 
-<% end %>
+
+</div>
 
 <!-- - - - - - - - - - - Stats - - - - - - - - - - - --> 
 

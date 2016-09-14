@@ -4,6 +4,8 @@ $('#newTaskModal').modal('hide');
 $('#task_title').val('');
 $('#task_description').val('');
 
+$('#alert-<%=@user_category.category_id %>').hide();
+
 $('#list-of-class').append(" <%= j render partial: "layouts/task", locals: {task: @task} %>" );
 
 $('#stats-recap').empty();

@@ -1,4 +1,10 @@
+
 $('#task_<%= @task.id %>').remove();
+<% if @user_category.tasks.where(status: "incomplete").empty? %>
+  // $('#all-task').empty();
+  // We won't see this comment if there are tasks left...
+   $('#all-task').append("Deleted!!! ");
+<% end %>
 
 $('#stats-recap').empty();
 $('#stats-recap').append(" <%= j render partial: "layouts/stats_recap" %>");

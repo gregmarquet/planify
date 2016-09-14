@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   private
 
   def authorized?
-    redirect_to login_path if !logged_in?
+    redirect_to root_path if !logged_in?
     
-    if params[:user_id] && params[:user_id].to_i != current_user.id
-      redirect_to user_path
-    end
+    # if params[:user_id] && params[:user_id].to_i != current_user.id
+    #   redirect_to user_path
+    # end
   end
 
   def current_user

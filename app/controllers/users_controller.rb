@@ -8,11 +8,6 @@ class UsersController < ApplicationController
     @task = Task.new
   end
 
-  def edit
-    @user = current_user
-    render :partial => "/layouts/user_form", :locals => { :user => @user }
-  end
-
   def create
     @user = User.new_with_categories(user_params)
 

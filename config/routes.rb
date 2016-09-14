@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
+  
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root 'welcome#index'
   resources :tasks
   resources :sessions, only: [:create, :destroy]
-  resources :users, except: [:destroy] do
+  resources :users, except: [:destroy, :edit, :new] do
     resources :user_categories do 
     end
   end
