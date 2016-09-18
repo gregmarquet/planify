@@ -16,6 +16,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = current_user
     @task = Task.new(task_params)
     @user_category = UserCategory.find_by({user_id: params[:user_id],category_id: params[:category_id]})

@@ -1,15 +1,36 @@
+////////// modal ////////////
 
-$('#newTaskModal').modal('hide');
+// 1.remove modal
+$('#newTaskModal').modal('hide'); 
 
-$('#task_title').val('');
-$('#task_description').val('');
+// 2.clear title and description fields in form
+$('#task_title').val('');  
+$('#task_description').val(''); 
 
-$('#alert-<%=@user_category.category_id %>').hide();
+////////// alert ////////////
 
+// 1.hide the alert
+$('.alert').hide();   
+
+////////// task list ////////
+
+// 1.add task to list of class
 $('#list-of-class').append(" <%= j render partial: "layouts/task", locals: {task: @task} %>" );
 
+
+////////// task recap ////////
+
+// 1.empty stats recap
 $('#stats-recap').empty();
+
+// 2.add stats recap 
 $('#stats-recap').append(" <%= j render partial: "layouts/stats_recap" %>");
 
+
+////////// Pie chart ////////
+
+// 1.empty pie chart
 $('#pie-chart').empty();
+
+// 2.add pie chart
 $('#pie-chart').append(" <%= j render partial: "layouts/pie_chart" %>");

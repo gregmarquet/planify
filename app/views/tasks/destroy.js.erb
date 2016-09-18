@@ -1,9 +1,11 @@
+/////// Tasks /////////
 
+// 1.remove task
 $('#task_<%= @task.id %>').remove();
+
+// 2.check if there is still tasks in the list
 <% if @user_category.tasks.where(status: "incomplete").empty? %>
-  // $('#all-task').empty();
-  // We won't see this comment if there are tasks left...
-   $('#all-task').append("Deleted!!! ");
+   $('.alert').show();
 <% end %>
 
 $('#stats-recap').empty();
