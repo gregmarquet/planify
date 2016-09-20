@@ -29,8 +29,8 @@
     # {name: "Tasks completed", data: @user.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
     # {name: "Tasks abandoned", data: @user.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
      {name: "Tasks created", data: @user.tasks.group_by_day("tasks.created_at").count}
-     # {name: "Tasks completed", data: @user.tasks.where(status: "completed").group("strftime('%Y-%m-%d', tasks.modified_at)").count},
-     # {name: "Tasks abandoned", data: @user.tasks.where(status: "abandoned").group("strftime('%Y-%m-%d', tasks.modified_at)").count}
+     {name: "Tasks completed", data: @user.tasks.where(status: "completed").group_by_day("tasks.modified_at").count},
+     {name: "Tasks abandoned", data: @user.tasks.where(status: "abandoned").group_by_day("tasks.modified_at").count}
   ] %>
 <% end %>
 
