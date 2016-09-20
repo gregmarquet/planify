@@ -25,4 +25,8 @@ class UserCategory < ActiveRecord::Base
   def self.with_most_abandoned_tasks
     self.joins(:tasks).where("status = ?", "abandoned").group(:id).order("count(*) desc").first
   end
+
+  def no_active_tasks?
+    self.tasks.where(status: "incomplete").empty?
+  end
 end

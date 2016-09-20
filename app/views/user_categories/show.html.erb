@@ -8,12 +8,9 @@
 
 <div id="all-task">
 
-  <% if @user_category.tasks.where(status: "incomplete").empty? %>
+    <div <%= "style=display:none;" if !@user_category.no_active_tasks? %> class="alert alert-danger" role="alert" id="alert-<%=@user_category.category_id %>">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
 
-    <div class="alert alert-danger" role="alert" id="alert-<%=@user_category.category_id %>">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
-
-  <% end %>
-
+ 
     <div class="row m-b-50-px">
       <ul class="list-group col-sm-8 col-sm-offset-2" id="list-of-class" >
 
