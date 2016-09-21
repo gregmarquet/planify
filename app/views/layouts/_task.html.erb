@@ -9,8 +9,8 @@
 
       <ul class="dropdown-menu">
         <li><%= link_to 'Delete', task_path(task), :method => :delete, remote: true %></li>
-        <li><%= button_to 'Completed', task_path(task), :method => :put, params: {:"task[status]" => "completed"}, remote: true, class: "btn btn-link" %></li>
-        <li><%= button_to 'Abandoned', task_path(task), :method => :put, params: {:"task[status]" => "abandoned"}, remote: true, class: "btn btn-link" %></li>
+        <li><%= link_to 'Completed', task_path(task, params: {:"task[status]" => "completed"}), :method => :put, remote: true %></li>
+        <li><%= link_to 'Abandoned', task_path(task, params: {:"task[status]" => "abandoned"}), :method => :put, remote: true %></li>
       </ul>
 
     </div>
@@ -23,7 +23,7 @@
         <%= task.description %>
       <% end %>
     </div>
-    
+
   </li>
 
 </div>
