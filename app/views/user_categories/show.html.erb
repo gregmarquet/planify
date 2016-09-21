@@ -1,3 +1,5 @@
+<!--  INDIVIDUAL CATEGORY PAGE  -->
+
 <div class="container">
 
   <h1 class="text-center m-t-50-px m-b-50-px"><%= @user_category.category.name %></h1>
@@ -8,9 +10,12 @@
 
 <div id="all-task">
 
+    <!-- - - - - - - - - - - Alert - - - - - - - - - - - --> 
+
     <div <%= "style=display:none;" if !@user_category.no_active_tasks? %> class="alert alert-danger" role="alert" id="alert-<%=@user_category.category_id %>">You do not have any active tasks! <%= link_to "Time to create a task", "#", data: {toggle: "modal", target: "#newTaskModal"}, class: "task_form_link alert-link", id: @user_category.category_id %>.</div>
 
- 
+    <!-- - - - - - - - - - - List  - - - - - - - - - - - -->
+
     <div class="row m-b-50-px">
       <ul class="list-group col-sm-8 col-sm-offset-2" id="list-of-class" >
 
