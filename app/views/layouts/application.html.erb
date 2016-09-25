@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
   <% if current_user %>
     <%= render "/users/edit_user_profile_modal" %>
@@ -15,84 +16,91 @@
     <%= render "layouts/sign_up_modal" %>
   <% end %>
 
-  <nav class="navbar navbar-default navbar-static-top m-b-0-px">
-    <div class="container">
+  <div id="wrapper">
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+    <nav class="navbar navbar-default navbar-static-top m-b-0-px" id="header">
+      <div class="container">
 
-        <% if current_user %>
-          <%= link_to "Planify", user_path(current_user), class: "navbar-brand"  %>
-        <% else %>
-          <%= link_to "Planify", root_path, class: "navbar-brand"  %>
-        <% end %>
-      </div>
-
-      <div id="navbar" class="navbar-collapse collapse">
-
-        <% if current_user %>    
-
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'Dashboard', user_path(current_user) %></li>
-          <li><%= link_to 'Tasks', tasks_path, method: 'get' %></li>
-          <li><%= link_to 'Stats', stats_path, method: 'get' %></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-            <% @user.user_categories.each do |user_category|%>
-              <li><a href="#"><%= link_to user_category.category.name, user_user_category_path(@user, user_category) %></a></li>
-            <% end %>  
-            </ul>
-          </li>
-        </ul>
-              
-        <% end %>
-
-        <ul class="nav navbar-nav navbar-right">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
           <% if current_user %>
+            <%= link_to "Planify", user_path(current_user), class: "navbar-brand"  %>
+          <% else %>
+            <%= link_to "Planify", root_path, class: "navbar-brand"  %>
+          <% end %>
+        </div>
 
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <% if current_user %>    
+
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Dashboard', user_path(current_user) %></li>
+            <li><%= link_to 'Tasks', tasks_path, method: 'get' %></li>
+            <li><%= link_to 'Stats', stats_path, method: 'get' %></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <%= javascript_tag "var userId = #{current_user.id};" %>
-                 <li><a id='editUserProfileButton' href="#" data-toggle="modal" data-target="#editUserProfileModal">Edit Profile</a></li>
-                 <li><%= link_to 'Log Out', logout_path, method: 'get' %></li>
+              <% @user.user_categories.each do |user_category|%>
+                <li><a href="#"><%= link_to user_category.category.name, user_user_category_path(@user, user_category) %></a></li>
+              <% end %>  
               </ul>
             </li>
-
-          <% else %>
-
-            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#signUpModal">Sign Up</button>              
-            
-            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">Log In</button>
-                         
+          </ul>
+                
           <% end %>
-          
-        </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <% if current_user %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <%= javascript_tag "var userId = #{current_user.id};" %>
+                   <li><a id='editUserProfileButton' href="#" data-toggle="modal" data-target="#editUserProfileModal">Edit Profile</a></li>
+                   <li><%= link_to 'Log Out', logout_path, method: 'get' %></li>
+                </ul>
+              </li>
+
+            <% else %>
+
+              <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#signUpModal">Sign Up</button>              
+              
+              <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">Log In</button>
+                           
+            <% end %>
+            
+          </ul>
+        </div> 
       </div>
+    </nav> <!-- end of navbar -->
+
+    <div id="content">
+
+      <%= yield %>
+
     </div>
-  </nav>
 
-<%= yield %>
-
-  <footer class="footer jumbotron-quote text-center">
-  <div class="container">
-    <div class="row">
-      <div class="">
-        <p class="text-muted p-y-20">© 2016 <span class="color-c7">Planify</span>, made by <span class="color-c7">Greg Marquet</span></p>
+    <footer class="footer jumbotron-quote text-center" id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="">
+            <p class="text-muted p-y-20">© 2016 <span class="color-c7">Planify</span>, made by <span class="color-c7">Greg Marquet</span></p>
+          </div>
+          <div class="pull-right">
+            <a href="http://gregmarquet.com"><i class="icon-twitter"></i></a>
+          </div>
+        </div>
       </div>
-      <div class="pull-right">
-        <a href="http://gregmarquet.com"><i class="icon-twitter"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
+    </footer> <!-- end of footer -->
 
+  </div> <!-- end of wrapper -->
 </body>
 </html>
