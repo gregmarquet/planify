@@ -11,7 +11,7 @@
       <!-- - - - - - - - - - - Active Tasks  - - - - - - - - - - - -->
         <h3 class="text-center m-t-50-px m-b-30-px">Incomplete</h3>
         <% @tasks.incomplete.each do |task| %>
-          <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
+          <div class="pointered" data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
             <li class="list-group-item"><%= task.title %>
               <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
               <% if (!task.description || task.description == "") %>
