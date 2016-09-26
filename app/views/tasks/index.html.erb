@@ -1,59 +1,63 @@
 <!-- TASKS INDEX PAGE -->
+<div class="container">
 
-<% if @tasks.empty? %>
-  <h3 class="text-center m-t-50-px">You do not have any tasks!</h3>
-<% else %>
+  <% if @tasks.empty? %>
+    <h3 class="text-center m-t-50-px">You do not have any tasks!</h3>
+  <% else %>
 
-<div class="row">
-  <ul class="list-group col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <ul class="list-group col-sm-8 col-sm-offset-2 p-r-0">
 
-  <!-- - - - - - - - - - - Active Tasks  - - - - - - - - - - - -->
-    <h3 class="text-center m-t-50-px m-b-30-px">Incomplete</h3>
-    <% @tasks.incomplete.each do |task| %>
-      <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
-        <li class="list-group-item"><%= task.title %>
-          <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
-          <% if (!task.description || task.description == "") %>
-            No description for this task!
-          <% else %>
-            <%= task.description %>
-          <% end %>
+      <!-- - - - - - - - - - - Active Tasks  - - - - - - - - - - - -->
+        <h3 class="text-center m-t-50-px m-b-30-px">Incomplete</h3>
+        <% @tasks.incomplete.each do |task| %>
+          <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
+            <li class="list-group-item"><%= task.title %>
+              <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
+              <% if (!task.description || task.description == "") %>
+                No description for this task!
+              <% else %>
+                <%= task.description %>
+              <% end %>
+              </div>
+            </li>
           </div>
-        </li>
-      </div>
-    <% end %>
+        <% end %>
 
-    <!-- - - - - - - - - - - Completed Tasks  - - - - - - - - - - - -->
-    <h3 class="text-center m-t-50-px m-b-30-px">Completed</h3>
-    <% @tasks.completed.each do |task| %>
-      <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
-        <li class="list-group-item"><%= task.title %>
-          <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
-          <% if (!task.description || task.description == "") %>
-              No description for this task!
-          <% else %>
-              <%= task.description %>
-          <% end %>
+        <!-- - - - - - - - - - - Completed Tasks  - - - - - - - - - - - -->
+        <h3 class="text-center m-t-50-px m-b-30-px">Completed</h3>
+        <% @tasks.completed.each do |task| %>
+          <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
+            <li class="list-group-item"><%= task.title %>
+              <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
+              <% if (!task.description || task.description == "") %>
+                  No description for this task!
+              <% else %>
+                  <%= task.description %>
+              <% end %>
+              </div>
+            </li>
           </div>
-        </li>
-      </div>
-    <% end %>
+        <% end %>
 
-    <!-- - - - - - - - - - - Abandoned Tasks  - - - - - - - - - - - -->
-    <h3 class="text-center m-t-50-px m-b-30-px">Abandoned</h3>
-    <% @tasks.abandoned.each do |task| %>
-      <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
-        <li class="list-group-item"><%= task.title %>
-          <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
-          <% if (!task.description || task.description == "") %>
-              No description for this task!
-          <% else %>
-              <%= task.description %>
-          <% end %>
+        <!-- - - - - - - - - - - Abandoned Tasks  - - - - - - - - - - - -->
+        <h3 class="text-center m-t-50-px m-b-30-px">Abandoned</h3>
+        <% @tasks.abandoned.each do |task| %>
+          <div data-toggle="collapse" href="#collapsed-details-<%= task.id %>" aria-expanded="false" aria-control="collapsed-details-<%= task.id %>">
+            <li class="list-group-item"><%= task.title %>
+              <div class="collapse descriptions" id="collapsed-details-<%= task.id %>">
+              <% if (!task.description || task.description == "") %>
+                  No description for this task!
+              <% else %>
+                  <%= task.description %>
+              <% end %>
+              </div>
+            </li>
           </div>
-        </li>
-      </div>
-    <% end %> 
-  </ul>
+        <% end %> 
+      </ul>
+    </div>
+
+  <% end %>
 </div>
-<% end %>
+

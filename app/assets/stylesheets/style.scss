@@ -1,9 +1,19 @@
+// html {
+//   box-sizing: border-box;
+// }
+// *, *:before, *:after {
+//   box-sizing: inherit;
+// }
+
+
 html,
 body {
   margin:0;
   padding:0;
   height:100%;
 }
+
+///////////// Application //////////////
 
 .navbar {
   font-size: 1.5em;
@@ -13,81 +23,49 @@ body {
   font-size: 1.5em;
 }
 
-.task-list {
-  border: 1px solid red;
+#wrapper {
+  min-height:100%;
+  position:relative;
 }
 
-.list-group-item{
-  font-size: 1.2em;
-  background-color: #f8f8f8;
-  color: #333333;
+#content {
+  padding-bottom:100px; /* Height of the footer element or more */
+}
+#footer {
+  width:100%;
+  // height:100px;
+  position:absolute;
+  bottom:0;
+  left:0;
 }
 
-.list-group-item .descriptions{
-  font-size: 0.8em;
-  padding-left: 10px;
-  color: #a1a1a1;
+.footer {
+  font-size: 1em;
   
 }
 
-.categories {
-  min-height: 200px;
-  max-width: 470px;
-  border-radius: 6px;
-  margin-bottom: 30px;
-  padding: 10px;
-  // line-height: 100px;
+/////////// Welcome Page /////////////// 
+
+.goal-img {
+  background: url(image-path("Goals.jpg"));
+  background-position: center;
+  background-size: cover;
+  height: 300px;
 }
 
-.categories {
-  // vertical-align: middle;
-  font-size: 2.5rem;
-  color: black;
-  text-decoration: none;
-  // line-height: 300px;
+.exercise-img {
+  background: url(image-path("Exercise.jpg"));
+  background-position: center;
+  background-size: cover;
+  height: 300px;
 }
 
-.categories span {
-
-}
-
-.categories p {
-  background-color: white;
-  opacity: 0.5;
-  margin: -10px -10px -35px -10px;
-  padding: 0 10px;
-}
-
-.category-text {
-  font-size: 20px;
-}
-
-.m-t-50-px {
-  margin-top: 50px;
-}
-
-.m-b-50-px {
-  margin-bottom: 50px;
-}
-
-.m-b-30-px {
-  margin-bottom: 30px;
-}
-
-.m-b-0-px {
-  margin-bottom: 0px;
-}
-
-.m-x-2rem {
-  margin: 0 4rem;
-}
-
-.p-y-20 {
-  padding: 20px 0;
-}
-
-.p-l-30 {
-  padding: 0 15px 0 30px;
+.portrait {
+  background: url(image-path("portrait-1.jpg"));
+  background-position: center;
+  background-size: cover;
+  height: 12em;
+  width: 12em;
 }
 
 .jumbotron-quote {
@@ -115,30 +93,6 @@ body {
   background-color: pink;
 }
 
-.border {
-  border: 1px solid red;
-}
-
-.underlined {
-  font-style: italic;
-  // text-decoration: underline;
-
-}
-
-.goal-img {
-  background: url(image-path("Goals.jpg"));
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-}
-
-.exercise-img {
-  background: url(image-path("Exercise.jpg"));
-  background-position: center;
-  background-size: cover;
-  height: 300px;
-}
-
 .font-blocks {
   font-family: PTSerif-Regular;
   font-size: 20px;
@@ -151,16 +105,135 @@ body {
   color: #494849;
 }
 
-.portrait {
-  background: url(image-path("portrait-1.jpg"));
+/////////// Dashboard ///////////////
+
+#category-1 {
+  background: url(image-path("Fitness&body.jpg"));
   background-position: center;
   background-size: cover;
-  height: 200px;
-  width: 200px;
 }
 
-.v-a-c {
-  vertical-align: center;
+#category-2 {
+  background: url(image-path("Mind&Soul.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+#category-3 {
+  background: url(image-path("Love.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+#category-4 {
+  background: url(image-path("Friends&Family2.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+#category-5 {
+  background: url(image-path("Career.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+#category-6 {
+  background: url(image-path("finance.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+#category-7 {
+  background: url(image-path("PersonalGrowth2.jpg"));
+  background-position: center;
+  background-size: cover;
+}
+
+.categories {
+  min-height: 200px;
+  max-width: 100%;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-size: 2.5rem;
+  color: black;
+  text-decoration: none;
+  
+} 
+
+.categories p {
+  background-color: white;
+  opacity: 0.5;
+  margin: -10px -10px -35px -10px;
+  padding: 0 10px;
+}
+
+.category-text {
+  font-size: 20px;
+}
+
+
+/////////// user_categories show and tasks index /////////////// 
+
+
+.list-group-item{
+  font-size: 1.2em;
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.list-group-item .descriptions{
+  font-size: 0.8em;
+  padding-left: 10px;
+  color: #a1a1a1;
+  
+}
+
+.list-group a {
+  text-decoration: none;
+}
+
+/////////// general classes /////////////// 
+
+.m-t-50-px {
+  margin-top: 50px;
+}
+
+.m-b-50-px {
+  margin-bottom: 50px;
+}
+
+.m-b-30-px {
+  margin-bottom: 30px;
+}
+
+.m-b-0-px {
+  margin-bottom: 0px;
+}
+
+.m-x-2rem {
+  margin: 0 4rem;
+}
+
+.m-r-minus15px {
+    margin-right: -15px;
+    margin-left: 0px;
+}
+
+.p-r-0 {
+  padding-right: 0;
+}
+
+.p-y-20 {
+  padding: 20px 0;
+}
+
+.p-l-30 {
+  padding: 0 15px 0 30px;
+}
+
+.underlined {
+  font-style: italic;
 }
 
 .color-7 {
@@ -175,92 +248,4 @@ body {
   color: red;
 }
 
-.footer {
-  font-size: 1em;
-  
-}
 
-.icon-twitter {
-  background: url(image-path("twitter.png"));
-  color: white;
-  height: 30px;
-  width: 30px;
-
-}
-
-#category-1 {
-  background: url(image-path("Fitness&body.jpg"));
-  background-position: center;
-  background-size: cover;
-  // float: left;
-  // margin-left: 2rem;
-  // min-height: 100px;
-  // margin-left: 4rem;
-  // margin-right: 10rem;
-}
-
-#category-2 {
-  background: url(image-path("Mind&Soul.jpg"));
-  background-position: center;
-  background-size: cover;
-  // float: right;
-  // margin-right: 2rem;
-  // min-height: 100px;
-}
-
-#category-3 {
-  background: url(image-path("Love.jpg"));
-  background-position: center;
-  background-size: cover;
-  // float: left;
-  // min-height: 100px;
-}
-
-#category-4 {
-  background: url(image-path("Friends&Family2.jpg"));
-  background-position: center;
-  background-size: cover;
-  // float: right;
-  // min-height: 100px;
-}
-
-#category-5 {
-  background: url(image-path("Career.jpg"));
-  background-position: center;
-  background-size: cover;
-  // min-height: 100px;
-}
-
-#category-6 {
-  background: url(image-path("finance.jpg"));
-  background-position: center;
-  background-size: cover;
-  // min-height: 100px;
-}
-
-#category-7 {
-  background: url(image-path("PersonalGrowth2.jpg"));
-  background-position: center;
-  background-size: cover;
-  // min-height: 100px;
-}
-
-.list-group a {
-  text-decoration: none;
-}
-
-#wrapper {
-  min-height:100%;
-  position:relative;
-}
-
-#content {
-  padding-bottom:100px; /* Height of the footer element or more */
-}
-#footer {
-  width:100%;
-  // height:100px;
-  position:absolute;
-  bottom:0;
-  left:0;
-}

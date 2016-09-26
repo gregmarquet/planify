@@ -7,7 +7,7 @@
       <% @user.user_categories.each do |user_category|%>
         
         <a href=<%= user_user_category_path(@user, user_category) %>>
-          <div class="col-sm-4 col-sm-offset-1 col-md-4 categories" id="category-<%= user_category.category_id %>"><p><%= user_category.category.name %>
+          <div class="col-xs-12 col-sm-4 col-sm-offset-1 col-md-4 categories" id="category-<%= user_category.category_id %>"><p><%= user_category.category.name %>
             <span class="pull-right"><%= user_category.tasks.where(status: "incomplete").count%></span></p>                 
           </div>
         </a>
